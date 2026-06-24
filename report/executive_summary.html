@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Summary — 2026 공공AI 박람회 기술 트렌드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0A1628;
+      --blue:   #1A3A6B;
+      --accent: #006FE6;
+      --teal:   #0E7C7B;
+      --gold:   #C9962B;
+      --red:    #C0392B;
+      --green:  #1A7A4A;
+      --bg:     #FFFFFF;
+      --bg2:    #F7F8FA;
+      --border: #DDE1E8;
+      --text:   #1A1E27;
+      --muted:  #5C6373;
+      --light:  #8A93A6;
+      --ff-kr:  'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+      --ff-en:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html { font-size: 10.5pt; }
+    body {
+      font-family: var(--ff-kr);
+      background: #E8EBF0;
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── DOCUMENT SHELL ── */
+    .doc {
+      max-width: 860px;
+      margin: 36px auto;
+      background: var(--bg);
+      box-shadow: 0 4px 40px rgba(0,0,0,.15);
+    }
+
+    /* ── LETTERHEAD ── */
+    .letterhead {
+      background: var(--navy);
+      padding: 0;
+      display: grid;
+      grid-template-columns: 6px 1fr;
+    }
+    .lh-stripe { background: var(--accent); }
+    .lh-body { padding: 36px 48px 32px; }
+    .lh-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .lh-brand {
+      font-family: var(--ff-en);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    .lh-doc-info { text-align: right; }
+    .lh-doc-type {
+      font-family: var(--ff-en);
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(0,111,230,.5);
+      padding: 2px 10px;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    .lh-date {
+      font-family: var(--ff-en);
+      font-size: 7.5pt;
+      color: rgba(255,255,255,.4);
+    }
+    .lh-title {
+      font-size: 20pt;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+      margin-bottom: 6px;
+    }
+    .lh-title em { color: #5BAAFF; font-style: normal; }
+    .lh-subtitle {
+      font-size: 9pt;
+      color: rgba(255,255,255,.5);
+      font-weight: 300;
+    }
+
+    /* ── META ROW ── */
+    .meta-row {
+      background: var(--blue);
+      padding: 14px 48px;
+      display: flex;
+      gap: 40px;
+    }
+    .meta-item { }
+    .meta-label {
+      font-family: var(--ff-en);
+      font-size: 6.5pt;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 2px;
+    }
+    .meta-value {
+      font-size: 8pt;
+      color: rgba(255,255,255,.8);
+      font-weight: 500;
+    }
+
+    /* ── BODY ── */
+    .body { padding: 40px 48px 0; }
+
+    /* ── SECTION HEADER ── */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--navy);
+    }
+    .sec-num {
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--ff-en);
+      font-size: 7.5pt;
+      font-weight: 700;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sec-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .sec-en {
+      margin-left: auto;
+      font-family: var(--ff-en);
+      font-size: 7pt;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    .block { margin-bottom: 32px; }
+
+    /* ── EXEC BOX ── */
+    .exec-box {
+      background: var(--navy);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .exec-box::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--accent);
+    }
+    .exec-box p { font-size: 9pt; color: rgba(255,255,255,.85); line-height: 1.8; }
+    .exec-box p + p { margin-top: 10px; }
+    .exec-box strong { color: #fff; }
+
+    /* ── KPI ROW ── */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .kpi {
+      border: 1px solid var(--border);
+      padding: 16px;
+      text-align: center;
+      background: var(--bg2);
+    }
+    .kpi-num {
+      font-family: var(--ff-en);
+      font-size: 22pt;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .kpi-num sup { font-size: 12pt; vertical-align: super; }
+    .kpi-label { font-size: 7.5pt; color: var(--muted); line-height: 1.4; }
+
+    /* ── TREND CARDS ── */
+    .trend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .trend-card {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 14px 16px;
+    }
+    .tc1 { border-left-color: var(--navy); }
+    .tc2 { border-left-color: var(--accent); }
+    .tc3 { border-left-color: var(--teal); }
+    .tc4 { border-left-color: var(--red); }
+    .tc5 { border-left-color: var(--gold); }
+    .trend-rank-label {
+      font-family: var(--ff-en);
+      font-size: 7pt; font-weight: 700;
+      letter-spacing: .06em;
+      color: var(--light);
+      margin-bottom: 4px;
+    }
+    .trend-name { font-size: 9pt; font-weight: 700; color: var(--navy); margin-bottom: 5px; line-height: 1.3; }
+    .trend-text { font-size: 8pt; color: var(--muted); line-height: 1.65; }
+
+    /* ── FREQ TABLE ── */
+    table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin-bottom: 16px; }
+    thead tr { background: var(--navy); }
+    thead th { color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; font-size: 7.5pt; letter-spacing: .03em; }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:nth-child(even) { background: var(--bg2); }
+    tbody td { padding: 7px 10px; color: var(--text); vertical-align: middle; }
+    .check { color: var(--accent); font-weight: 700; text-align: center; }
+    .dash  { color: var(--border); text-align: center; }
+    .score { font-family: var(--ff-en); font-weight: 800; font-size: 9pt; text-align: center; color: var(--navy); }
+    .badge {
+      display: inline-block;
+      font-family: var(--ff-en);
+      font-size: 6.5pt; font-weight: 700; letter-spacing: .04em;
+      padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+    }
+    .bp { background: #D4F0E4; color: #1A7A4A; }
+    .be { background: #D6E8FF; color: #1A3A6B; }
+    .bg { background: #FFF0CC; color: #966A00; }
+    .bm { background: #F2E8FF; color: #6A3DB8; }
+
+    /* ── IMPLICATION LIST ── */
+    .impl-list { list-style: none; margin-bottom: 16px; }
+    .impl-list li {
+      display: flex; gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .impl-list li:last-child { border-bottom: none; }
+    .impl-n {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      background: var(--navy); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-en); font-size: 8pt; font-weight: 700;
+      margin-top: 1px;
+    }
+    .impl-t { font-size: 8.5pt; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .impl-d { font-size: 8pt; color: var(--text); line-height: 1.65; }
+
+    /* ── OUTLOOK TABLE ── */
+    .outlook-td { color: var(--blue); font-weight: 600; }
+
+    /* ── TAKEAWAY GRID ── */
+    .tkgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .tk {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+    }
+    .tk-for {
+      font-family: var(--ff-en);
+      font-size: 7pt; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 5px;
+    }
+    .tk-text { font-size: 8pt; line-height: 1.65; color: var(--text); }
+
+    /* ── CONCLUSION ── */
+    .conclusion {
+      background: var(--navy);
+      margin: 32px -48px 0;
+      padding: 28px 48px;
+      position: relative;
+    }
+    .conclusion::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .conclusion h3 { font-size: 10.5pt; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .conclusion p { font-size: 8.5pt; color: rgba(255,255,255,.78); line-height: 1.8; margin-bottom: 8px; }
+    .conclusion .hl {
+      display: block; margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(0,111,230,.25);
+      border-left: 3px solid var(--accent);
+      font-size: 8.5pt; font-weight: 600; color: #fff; line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    .foot {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 12px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .foot-left { font-size: 7pt; color: var(--light); }
+    .foot-right { display: flex; gap: 16px; }
+    .foot-right a { font-size: 7.5pt; color: var(--accent); font-weight: 600; }
+    .foot-right a:hover { text-decoration: underline; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: #fff; }
+      .doc { max-width: none; margin: 0; box-shadow: none; }
+      .block { page-break-inside: avoid; }
+      .trend-grid { page-break-inside: avoid; }
+      .foot-right { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- LETTERHEAD -->
+  <div class="letterhead">
+    <div class="lh-stripe"></div>
+    <div class="lh-body">
+      <div class="lh-top">
+        <div class="lh-brand">Public AI Expo · 2026 Analysis</div>
+        <div class="lh-doc-info">
+          <div class="lh-doc-type">Executive Summary</div>
+          <div class="lh-date">2026. 06. 24</div>
+        </div>
+      </div>
+      <div class="lh-title">2026 공공AI 박람회<br><em>기술 트렌드 리포트</em></div>
+      <div class="lh-subtitle">행정안전부 · NIA 한국지능정보사회진흥원 주관 | 제9회 전자정부의 날 기념</div>
+    </div>
+  </div>
+
+  <!-- META ROW -->
+  <div class="meta-row">
+    <div class="meta-item"><div class="meta-label">분석 범위</div><div class="meta-value">Topic 01–05 전체 세션</div></div>
+    <div class="meta-item"><div class="meta-label">참여기업</div><div class="meta-value">51개+ (5개 카테고리)</div></div>
+    <div class="meta-item"><div class="meta-label">분석 엔진</div><div class="meta-value">Claude Sonnet 4.6</div></div>
+    <div class="meta-item"><div class="meta-label">대상 독자</div><div class="meta-value">기관장 · CIO/CDO · 기술 전략팀</div></div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- KPI -->
+    <div class="kpi-row" style="margin-top:28px;">
+      <div class="kpi">
+        <div class="kpi-num">5</div>
+        <div class="kpi-label">세션 심층 분석<br>(Topic 01–05)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">51<sup>+</sup></div>
+        <div class="kpi-label">참여기업<br>생태계 분석</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">4</div>
+        <div class="kpi-label">국산 LLM<br>공공 채널 진입</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">4<sup>/5</sup></div>
+        <div class="kpi-label">Agentic AI<br>세션 출현 빈도</div>
+      </div>
+    </div>
+
+    <!-- EXEC SUMMARY -->
+    <div class="block">
+      <div class="sec-head">
+        <div class="sec-num">1</div>
+        <div class="sec-title">Executive Summary</div>
+      </div>
+      <div class="exec-box">
+        <p>2026 공공AI 박람회는 대한민국 공공 AI 전환(Public AX)이 <strong>실험에서 운영으로</strong> 이동하는 변곡점임을 확인한 행사다. 51개 이상의 기업이 참가한 이번 행사에서 세 가지 핵심 메시지가 도출됐다.</p>
+        <p>첫째, <strong>Agentic AI가 공공 AI의 새로운 기준선이 됐다.</strong> 단순 챗봇·검색 보조를 넘어 계획-실행-검증을 자율 반복하는 Agent 시스템이 5개 세션 모두에서 등장했다. 둘째, <strong>국산 LLM이 공공 신뢰의 핵심 인프라로 부상했다.</strong> Exaone 4.5, Kanana, Solar Pro 3, CLOVA Studio for GOV가 각각 공공 특화 채널을 확보하며 Sovereign AI 경쟁에 진입했다. 셋째, <strong>보안과 거버넌스가 기술과 동등한 조달 기준이 됐다.</strong> CSAP·폐쇄망·AI 가드레일을 갖추지 못한 솔루션은 공공 시장 진입 자체가 어렵다.</p>
+      </div>
+    </div>
+
+    <!-- TOP 5 TRENDS -->
+    <div class="block">
+      <div class="sec-head">
+        <div class="sec-num">2</div>
+        <div class="sec-title">핵심 기술 트렌드 TOP 5</div>
+        <div class="sec-en">Key Technology Trends</div>
+      </div>
+      <div class="trend-grid">
+        <div class="trend-card tc1">
+          <div class="trend-rank-label">TREND #1 · 출현 4/5</div>
+          <div class="trend-name">Agentic AI — 자율 루프형 에이전트</div>
+          <div class="trend-text">이듬 AI Multi-Agent, LG CNS AgenticWorks, 와이즈넛 WISE Agent Sphere, 제네시스랩 Agentria. 공공 업무 프로세스 자동화의 패러다임 전환.</div>
+        </div>
+        <div class="trend-card tc2">
+          <div class="trend-rank-label">TREND #2 · 출현 4/5</div>
+          <div class="trend-name">Sovereign LLM — 국산 모델 공공 채널화</div>
+          <div class="trend-text">Exaone 4.5(조달청 PP존), Kanana(AI 국민비서), CLOVA Studio for GOV(AI법 선점). 데이터 주권·보안 요건 충족과 내수 AI 생태계 구축 동시 달성.</div>
+        </div>
+        <div class="trend-card tc3">
+          <div class="trend-rank-label">TREND #3 · 출현 2/5</div>
+          <div class="trend-name">Document AI — 행정 문서 완전 자동화</div>
+          <div class="trend-text">사이냅소프트 OCR IX, 한국딥러닝 DEEP Agent(96% 정확도), Chat Exaone Canvas. 한글 서식·법조문·다문서 비교의 공공 특화 처리.</div>
+        </div>
+        <div class="trend-card tc4">
+          <div class="trend-rank-label">TREND #4 · 출현 3/5</div>
+          <div class="trend-name">AI Security — 생성형 AI 보안 레이어</div>
+          <div class="trend-text">솔트웨어 Sapie-Guardian, 윈스테크넷 SNIPER AIVAX, Kanana Safeguard, 디어라운드 CronoZen. 데이터 유출·환각·오용 방지 + AI 결정 감사 추적.</div>
+        </div>
+      </div>
+      <div class="trend-grid" style="grid-template-columns:1fr;">
+        <div class="trend-card tc5">
+          <div class="trend-rank-label">TREND #5 · 출현 2/5</div>
+          <div class="trend-name">Vibe Coding — 비개발자 AI 프로토타이핑 민주화</div>
+          <div class="trend-text">Claude(재난 3D 시뮬), Replit(정책 대시보드), Lovable(공공 채팅) — 행안부·NIA·카카오 기관장 직접 시연. 공공 AI 심리적 진입장벽 해소. 단, 프로토타입→운영 전환 거버넌스 설계가 필수 다음 단계.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FREQ TABLE -->
+    <div class="block">
+      <div class="sec-head">
+        <div class="sec-num">3</div>
+        <div class="sec-title">반복 등장 기술 빈도 분석</div>
+        <div class="sec-en">Trend Frequency · Maturity Assessment</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>기술 키워드</th>
+            <th class="center">T01</th><th class="center">T02</th><th class="center">T03</th><th class="center">T04</th><th class="center">T05</th>
+            <th>출현</th>
+            <th>성숙도</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>공공 서비스 플랫폼 연동</strong></td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="score">5</td><td><span class="badge bp">Production</span></td></tr>
+          <tr><td><strong>Agentic AI / Multi-Agent</strong></td><td class="check">✓</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="score">4</td><td><span class="badge be">Early Prod.</span></td></tr>
+          <tr><td><strong>Sovereign LLM (국산)</strong></td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="score">4</td><td><span class="badge bp">Production</span></td></tr>
+          <tr><td>RAG / Knowledge Retrieval</td><td class="check">✓</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="check">✓</td><td class="score">3</td><td><span class="badge bp">Production</span></td></tr>
+          <tr><td>AI Security / Guardrail</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="score">3</td><td><span class="badge bg">Growing</span></td></tr>
+          <tr><td>Document AI (OCR/VLM)</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="check">✓</td><td class="score">2</td><td><span class="badge be">Early Prod.</span></td></tr>
+          <tr><td>Vibe Coding / No-Code</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="score">2</td><td><span class="badge bm">Emerging</span></td></tr>
+          <tr><td>Synthetic Data / Fine-tuning</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="dash">—</td><td class="score" style="color:var(--muted)">1</td><td><span class="badge be">Early Prod.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STRATEGIC IMPLICATIONS -->
+    <div class="block">
+      <div class="sec-head">
+        <div class="sec-num">4</div>
+        <div class="sec-title">Strategic Implications</div>
+        <div class="sec-en">공공기관 CIO/CDO 4가지 실행 지침</div>
+      </div>
+      <ul class="impl-list">
+        <li>
+          <div class="impl-n">1</div>
+          <div>
+            <div class="impl-t">Agentic AI POC를 2026년 내 착수하라</div>
+            <div class="impl-d">단순 챗봇 도입은 레거시 경로다. 멀티 에이전트 오케스트레이션 기반 업무 자동화 PoC를 지금 착수하지 않으면 2027년 구현 경쟁에서 뒤처진다.</div>
+          </div>
+        </li>
+        <li>
+          <div class="impl-n">2</div>
+          <div>
+            <div class="impl-t">국산 LLM + 보안 솔루션을 패키지로 조달하라</div>
+            <div class="impl-d">Exaone·Kanana·Solar와 AI 보안(Sapie-Guardian·SNIPER AIVAX)을 패키지로 설계해야 국정원 지침 준수와 도입 효율을 동시에 달성할 수 있다.</div>
+          </div>
+        </li>
+        <li>
+          <div class="impl-n">3</div>
+          <div>
+            <div class="impl-t">바이브 코딩을 PoC 도구로 제도화하라</div>
+            <div class="impl-d">기관장 시연이 증명한 "5분 프로토타입 가능성"을 공식 실험 문화로 연결하라. <strong>바이브 코딩 결과물 → 보안 검증 → 공식 PoC 전환</strong> 프로세스를 수립해야 한다.</div>
+          </div>
+        </li>
+        <li>
+          <div class="impl-n">4</div>
+          <div>
+            <div class="impl-t">AI 거버넌스를 기술 도입과 동시에 설계하라</div>
+            <div class="impl-d">CronoZen의 DPU 증명, Safeguard 가드레일처럼 AI 결정의 감사 추적 체계를 도입 초기에 내재화해야 한다. 사후 보완 비용은 기하급수적으로 증가한다.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2027 OUTLOOK -->
+    <div class="block">
+      <div class="sec-head">
+        <div class="sec-num">5</div>
+        <div class="sec-title">2027 Outlook</div>
+        <div class="sec-en">Forward-Looking Assessment</div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>전망 영역</th><th>2027 예측</th><th>근거</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="outlook-td">에이전트 표준화</td><td>공공 멀티에이전트 프로토콜 표준 논의 가시화</td><td>이듬 AI MCP vs LG CNS AgenticWorks 경쟁</td></tr>
+          <tr><td class="outlook-td">국산 LLM 조달 의무화</td><td>AI법 제27조 시행 후 국산 우선 조달 가이드라인</td><td>CLOVA Studio for GOV 선점 움직임</td></tr>
+          <tr><td class="outlook-td">Vibe Coding 제도화</td><td>AI 챔피언 제도 법제화, 공식 업무 도구 허가</td><td>행안부·NIA 기관장 직접 시연의 정치적 효과</td></tr>
+          <tr><td class="outlook-td">AI 보안 통합 플랫폼</td><td>보안·접근제어·감사 추적 단일 패키지화</td><td>현재 분산된 보안 솔루션의 통합 압력</td></tr>
+          <tr><td class="outlook-td">디지털 포용 의무화</td><td>공공 서비스 접근성 AI 법제화</td><td>E 카테고리 접근성 솔루션 18개사 집중</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- KEY TAKEAWAYS -->
+    <div class="block">
+      <div class="sec-head">
+        <div class="sec-num">6</div>
+        <div class="sec-title">Key Takeaways</div>
+        <div class="sec-en">독자별 핵심 메시지</div>
+      </div>
+      <div class="tkgrid">
+        <div class="tk">
+          <div class="tk-for">For 기관장</div>
+          <div class="tk-text">바이브 코딩으로 직접 시작하라. 기술 장벽은 이미 낮아졌다. 장벽은 이제 제도와 거버넌스다.</div>
+        </div>
+        <div class="tk">
+          <div class="tk-for">For CIO / CDO</div>
+          <div class="tk-text">에이전트 PoC 착수, 국산 LLM + 보안 패키지 조달, AI 거버넌스 내재화를 2026년 내 실행하라.</div>
+        </div>
+        <div class="tk">
+          <div class="tk-for">For 솔루션 벤더</div>
+          <div class="tk-text">공공 시장은 기술 성능보다 보안·인증·현장 적합성이 선결 조건이다. CSAP·폐쇄망·한국어 특화 없이는 RFP에서 탈락한다.</div>
+        </div>
+        <div class="tk">
+          <div class="tk-for">For 정책 입안자</div>
+          <div class="tk-text">AI법 시행(2026.8)과 동시에 MCP 표준·에이전트 거버넌스·Vibe Coding 제도화 가이드라인을 준비해야 한다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- CONCLUSION -->
+  <div class="conclusion" style="margin-left:0;margin-right:0;">
+    <h3>Final Conclusion</h3>
+    <p>2026 공공AI 박람회가 보여준 것은 공공 AI가 "도입할 것인가"를 논의하는 단계를 지나 <strong style="color:#fff;">"어떻게 제대로 운영할 것인가"</strong>로 진입했다는 사실이다. 승자를 가르는 기준은 <strong style="color:#fff;">에이전트 자율성(Agentic Capability)</strong>, <strong style="color:#fff;">국내 보안 규정 준수(Compliance)</strong>, <strong style="color:#fff;">현장 적합성(Domain Fitness)</strong> — 이 세 조건을 동시에 충족하는 솔루션만이 공공 조달의 문을 통과할 것이다.</p>
+    <span class="hl">핵심 3대 키워드: <strong>Agentic AI</strong> + <strong>Sovereign LLM</strong> + <strong>AI Security</strong> — 2026~2027 공공 AI 시장의 필수 조건이자 경쟁의 핵심 변수</span>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-left">본 리포트는 2026 공공AI 박람회 세션 자료(Topic 01–05) 및 참여기업 Directory Book 기반 분석 | 행정안전부 · NIA | 2026.06.24</div>
+    <div class="foot-right">
+      <a href="../docs/index.html">랜딩 페이지</a>
+      <a href="2026_공공AI박람회_기술트렌드리포트.html">전체 리포트</a>
+      <a href="https://github.com/Jfieldglobal/public-ai-expo-2026-report">GitHub</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
