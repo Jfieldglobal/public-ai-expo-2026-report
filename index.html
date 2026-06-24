@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</title>
+<style>
+  /* ── 기본 설정 ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0D2240;
+    --blue:    #0057A8;
+    --mid:     #1A6EC7;
+    --light:   #E8F0F9;
+    --accent:  #C8102E;
+    --gold:    #C89600;
+    --text:    #1A1A2E;
+    --muted:   #5A6478;
+    --border:  #CBD5E0;
+    --white:   #FFFFFF;
+    --offwhite:#F7F9FC;
+  }
+
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: var(--text);
+    background: #E5E8EE;
+  }
+
+  /* ── 페이지 레이아웃 ── */
+  .page {
+    width: 297mm;
+    min-height: 210mm;
+    margin: 16px auto;
+    background: var(--white);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── 헤더 ── */
+  .page-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 18px 32px 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .page-header .report-title {
+    font-size: 9pt;
+    font-weight: 400;
+    opacity: 0.7;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .page-header .page-label {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── 커버 페이지 ── */
+  .cover-page {
+    width: 297mm;
+    min-height: 210mm;
+    margin: 16px auto;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0D2240 0%, #0A3A6B 60%, #072A5A 100%);
+  }
+  .cover-accent-bar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 8px; height: 100%;
+    background: var(--accent);
+  }
+  .cover-content {
+    position: relative;
+    z-index: 1;
+    padding: 52px 56px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover-eyebrow {
+    font-size: 9pt;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cover-main-title {
+    font-size: 28pt;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .cover-sub-title {
+    font-size: 14pt;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 36px;
+  }
+  .cover-divider {
+    width: 64px; height: 3px;
+    background: var(--gold);
+    margin-bottom: 32px;
+  }
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+  }
+  .cover-meta-item label {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 3px;
+  }
+  .cover-meta-item span {
+    font-size: 9.5pt;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+  .cover-footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding: 16px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cover-footer-left {
+    font-size: 8pt; color: rgba(255,255,255,0.45);
+  }
+  .cover-footer-right {
+    font-size: 8.5pt; color: rgba(255,255,255,0.6);
+    font-weight: 600;
+  }
+  .cover-classification {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    margin-top: 28px;
+  }
+
+  /* ── 본문 컨텐츠 ── */
+  .page-body {
+    padding: 28px 36px 20px;
+  }
+  .page-footer {
+    border-top: 1px solid var(--border);
+    padding: 8px 36px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 7.5pt;
+    color: var(--muted);
+  }
+  .page-num {
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* ── 섹션 제목 ── */
+  .section-title {
+    font-size: 14pt;
+    font-weight: 800;
+    color: var(--navy);
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+    margin-bottom: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .section-sub {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid var(--light);
+  }
+  .section-sub-sm {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 14px 0 7px;
+  }
+
+  /* ── 두 컬럼 ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* ── 인사이트 박스 ── */
+  .insight-box {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  .insight-box .title {
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .insight-box p {
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .highlight-box {
+    background: var(--light);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 9.5pt;
+    line-height: 1.65;
+  }
+
+  .callout {
+    background: #FFF8E1;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 9.5pt;
+    font-style: italic;
+    line-height: 1.65;
+    color: #4A3800;
+  }
+
+  .warning-box {
+    background: #FFF5F5;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 9pt;
+    color: #6B0000;
+  }
+
+  /* ── KPI 카드 ── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 14px 0; }
+  .kpi-card {
+    background: var(--offwhite);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--blue);
+    border-radius: 4px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .kpi-card .kpi-number {
+    font-size: 18pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    display: block;
+  }
+  .kpi-card .kpi-label {
+    font-size: 7.5pt;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ── 테이블 ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    margin: 10px 0;
+  }
+  thead tr { background: var(--navy); color: var(--white); }
+  thead th {
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  thead th.center { text-align: center; }
+  tbody tr:nth-child(even) { background: var(--offwhite); }
+  tbody tr:nth-child(odd) { background: var(--white); }
+  tbody tr:hover { background: var(--light); }
+  tbody td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody td.center { text-align: center; }
+  tbody td.highlight { font-weight: 700; color: var(--navy); }
+  .tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-size: 7pt;
+    font-weight: 700;
+  }
+  .tag-green  { background: #E6F4EA; color: #1A5C2A; }
+  .tag-yellow { background: #FFF3CD; color: #664D00; }
+  .tag-red    { background: #FDECEA; color: #8B0000; }
+  .tag-blue   { background: #E3F0FF; color: #003380; }
+  .tag-navy   { background: var(--navy); color: #fff; }
+
+  /* ── 파이프라인 / 플로우 ── */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 14px 0;
+    flex-wrap: wrap;
+  }
+  .pipeline-step {
+    background: var(--blue);
+    color: #fff;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 7px 11px;
+    text-align: center;
+    min-width: 70px;
+    flex: 1;
+    line-height: 1.3;
+  }
+  .pipeline-arrow {
+    color: var(--blue);
+    font-size: 14pt;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0 1px;
+  }
+  .pipeline-step:nth-child(odd) { background: var(--navy); }
+
+  /* ── 로드맵 ── */
+  .roadmap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0; }
+  .roadmap-phase {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .roadmap-phase-header {
+    background: var(--blue);
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-align: center;
+  }
+  .roadmap-phase-header.phase2 { background: var(--mid); }
+  .roadmap-phase-header.phase3 { background: var(--navy); }
+  .roadmap-phase-body {
+    padding: 10px 12px;
+    font-size: 8pt;
+    line-height: 1.6;
+    background: var(--offwhite);
+  }
+  .roadmap-phase-body li { margin-left: 14px; margin-bottom: 3px; }
+
+  /* ── 발견사항 ── */
+  .finding {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .finding-num {
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 11pt;
+    font-weight: 800;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .finding-content { flex: 1; }
+  .finding-content strong { font-size: 9.5pt; color: var(--navy); }
+  .finding-content p { font-size: 8.5pt; color: var(--muted); margin-top: 3px; line-height: 1.55; }
+
+  /* ── 추천사항 ── */
+  .rec-box {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .rec-header {
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 7px 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .rec-body {
+    padding: 10px 14px;
+    font-size: 8.5pt;
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  /* ── 예측 카드 ── */
+  .outlook-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  .outlook-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .outlook-card-header {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 100%);
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 8.5pt;
+    font-weight: 700;
+  }
+  .outlook-card-body {
+    padding: 10px 12px;
+    font-size: 8pt;
+    line-height: 1.6;
+    color: var(--muted);
+    background: var(--offwhite);
+  }
+
+  /* ── 매트릭스 ── */
+  .matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); margin: 12px 0; }
+  .matrix-cell {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    font-size: 8pt;
+    line-height: 1.55;
+  }
+  .matrix-cell.header-cell {
+    background: var(--navy); color: #fff;
+    font-weight: 700; font-size: 8.5pt;
+    text-align: center;
+  }
+  .matrix-cell.strength { background: #E6F4EA; }
+  .matrix-cell.weakness { background: #FFF5F5; }
+  .matrix-cell.opportunity { background: #E3F0FF; }
+  .matrix-cell.threat { background: #FFF8E1; }
+  .matrix-label {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+  }
+
+  /* ── 에이전트 다이어그램 ── */
+  .agent-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 14px 0;
+  }
+  .agent-box {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 8.5pt;
+    font-weight: 700;
+    min-width: 200px;
+    text-align: center;
+  }
+  .agent-box.orchestrator {
+    background: var(--accent);
+    font-size: 9pt;
+    min-width: 240px;
+    padding: 10px 20px;
+  }
+  .agent-sub-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .agent-box.sub {
+    background: var(--mid);
+    font-size: 7.5pt;
+    min-width: 110px;
+    padding: 7px 10px;
+  }
+  .agent-connector {
+    width: 1px;
+    height: 12px;
+    background: var(--border);
+    margin: 0 auto;
+  }
+  .agent-row-connector {
+    display: flex;
+    justify-content: center;
+    gap: 108px;
+    height: 12px;
+    align-items: center;
+  }
+  .agent-row-connector::before {
+    content: '';
+    width: 360px;
+    height: 1px;
+    background: var(--border);
+    position: absolute;
+  }
+
+  /* ── 경쟁 비교 색상 ── */
+  .compare-leader { background: #E6F4EA; font-weight: 700; }
+  .compare-strong { background: #EEF4FF; }
+  .compare-weak   { background: #FFF9F0; }
+
+  /* ── 프린트 미디어 ── */
+  @media print {
+    body { background: white; }
+    .page, .cover-page { margin: 0; box-shadow: none; page-break-after: always; }
+  }
+
+  /* ── 공통 유틸리티 ── */
+  .mt-4  { margin-top: 4px; }
+  .mt-8  { margin-top: 8px; }
+  .mt-12 { margin-top: 12px; }
+  .mt-16 { margin-top: 16px; }
+  .mb-4  { margin-bottom: 4px; }
+  .mb-8  { margin-bottom: 8px; }
+  .text-muted { color: var(--muted); }
+  .text-sm  { font-size: 8pt; }
+  .text-xs  { font-size: 7.5pt; }
+  .bold { font-weight: 700; }
+  .italic { font-style: italic; }
+  p { font-size: 9pt; line-height: 1.7; margin-bottom: 6px; }
+  ul, ol { margin-left: 18px; font-size: 8.5pt; line-height: 1.65; }
+  li { margin-bottom: 3px; }
+  strong { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+  COVER PAGE
+════════════════════════════════════════════════════════ -->
+<div class="cover-page">
+  <div class="cover-bg"></div>
+  <div class="cover-accent-bar"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">2026 공공AI 박람회 · 제9회 전자정부의 날 기념</div>
+    <div class="cover-main-title">기술 트렌드<br>리포트</div>
+    <div class="cover-sub-title">공공 AI 전환의 변곡점 — 실험에서 운영으로</div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-grid">
+      <div class="cover-meta-item"><label>발행일</label><span>2026년 6월 24일</span></div>
+      <div class="cover-meta-item"><label>분석 범위</label><span>Topic 01–05 + Directory Book</span></div>
+      <div class="cover-meta-item"><label>주관</label><span>행정안전부 / NIA 한국지능정보사회진흥원</span></div>
+      <div class="cover-meta-item"><label>대상 독자</label><span>기관장 · CIO/CDO · 기술 전략팀</span></div>
+      <div class="cover-meta-item"><label>분석 방법론</label><span>McKinsey Consulting Framework</span></div>
+      <div class="cover-meta-item"><label>분량</label><span>8페이지 (확장판)</span></div>
+    </div>
+    <div class="cover-classification">PUBLIC · 공개</div>
+  </div>
+  <div class="cover-footer">
+    <div class="cover-footer-left">본 리포트는 박람회 세션 자료(Topic 01–05) 및 참여기업 Directory Book을 기반으로 분석됐습니다.</div>
+    <div class="cover-footer-right">51개+ 참여기업 · 5개 심층 세션</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 1 — EXECUTIVE SUMMARY
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 01 · EXECUTIVE SUMMARY</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Executive Summary — 변곡점 선언</div>
+
+    <div class="insight-box">
+      <div class="title">Bottom Line Up Front</div>
+      <p>2026 공공AI 박람회는 대한민국 공공 AI 전환이 <strong style="color:#FFD700">"실험"에서 "운영"으로</strong> 임계점을 돌파한 변곡점이다. 51개 이상 기업, 5개 심층 세션이 한목소리로 확인한 메시지는 단 하나: <strong style="color:#FFD700">공공 부문의 AI 도입은 이제 선택이 아닌 생존 전략이다.</strong></p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-number">51<span style="font-size:11pt">+</span></span>
+        <div class="kpi-label">참여 기업 수<br>(스타트업 18개사 포함)</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-number">95<span style="font-size:11pt">%</span></span>
+        <div class="kpi-label">LG 임직원 8만명 중<br>Chat Exaone 사용률</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-number">4,500<span style="font-size:9pt">만</span></span>
+        <div class="kpi-label">Kakao Kanana<br>국내 MAU 도달 범위</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-number">15<span style="font-size:11pt">분</span></span>
+        <div class="kpi-label">이듬 AI 민원 300개+<br>처리 목표 시간</div>
+      </div>
+    </div>
+
+    <div class="section-sub">3대 핵심 발견 (Key Findings)</div>
+
+    <div class="finding">
+      <div class="finding-num">1</div>
+      <div class="finding-content">
+        <strong>Agentic AI가 공공 AI의 새로운 기준선이 됐다</strong>
+        <p>단순 챗봇·검색 보조를 넘어 "계획 → 실행 → 검증" 자율 루프를 가진 Agent 시스템이 5개 세션 전체에서 등장했다. 이듬 AI 멀티에이전트 민원플랫폼, LG CNS AgenticWorks, 와이즈넛 WISE Agent Sphere, 제네시스랩 Agentria가 그 증거다. 공공 AI는 이제 "답을 주는 AI"에서 <strong>"일을 하는 AI"</strong>로 이동했다.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">2</div>
+      <div class="finding-content">
+        <strong>국산 LLM이 공공 신뢰의 핵심 인프라로 부상했다</strong>
+        <p>Exaone 4.5(LG CNS), Kanana(Kakao), Solar Pro 3(Upstage), CLOVA Studio for GOV(Naver Cloud)가 조달청 PP존, 행정안전부 공식 협력, AI법(2026.8) 선점 등 공공 채널을 빠르게 확보 중이다. 데이터 주권 + 보안 준수 + 한국어 특화라는 <strong>3중 Lock-in</strong>이 해외 모델 진입을 구조적으로 차단한다.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">3</div>
+      <div class="finding-content">
+        <strong>보안과 거버넌스가 기술과 동등한 조달 기준이 됐다</strong>
+        <p>CSAP 인증, 폐쇄망 지원, AI 가드레일을 충족하지 못한 솔루션은 RFP 단계에서 탈락한다. AI 보안 전문 기업의 대거 참가(솔트웨어·윈스테크넷·SGA솔루션즈·시큐어포인트 등)가 이를 시장 신호로 입증한다.</p>
+      </div>
+    </div>
+
+    <div class="section-sub">핵심 권고사항 요약 (Action Summary)</div>
+    <table>
+      <thead><tr>
+        <th>대상</th><th>핵심 행동</th><th>기한</th><th class="center">우선순위</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="highlight">기관장</td><td>바이브 코딩 AI 챔피언 네트워크 구축, 내부 PoC 제도화</td><td>2026 Q3</td><td class="center"><span class="tag tag-red">최우선</span></td></tr>
+        <tr><td class="highlight">CIO / CDO</td><td>Agentic AI POC 착수 + 국산 LLM + 보안 패키지 조달</td><td>2026 H2</td><td class="center"><span class="tag tag-red">최우선</span></td></tr>
+        <tr><td class="highlight">IT 전략팀</td><td>AI 거버넌스 설계 (가드레일, 감사 추적, 데이터 정책)</td><td>2026 H2</td><td class="center"><span class="tag tag-yellow">높음</span></td></tr>
+        <tr><td class="highlight">조달 담당</td><td>CSAP · 조달청 PP존 등록 솔루션 우선 검토 틀 확립</td><td>즉시</td><td class="center"><span class="tag tag-yellow">높음</span></td></tr>
+        <tr><td class="highlight">벤더</td><td>CSAP + 폐쇄망 + 한국어 특화 3가지 없이 공공 시장 진입 불가</td><td>즉시</td><td class="center"><span class="tag tag-blue">필수</span></td></tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">1 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 2 — PUBLIC AI MARKET DIRECTION
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 02 · PUBLIC AI MARKET DIRECTION</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">공공 AI 시장 방향성 — 3계층 경쟁 구조의 형성</div>
+
+    <div class="section-sub">공급자 포지션 지도 (Supplier Position Map)</div>
+    <table>
+      <thead><tr>
+        <th>계층</th><th>대표 플레이어</th><th>핵심 전략</th><th>경쟁 우위</th><th class="center">시장 지위</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="highlight">대기업 풀스택 플랫폼</td><td>삼성SDS, LG CNS, 카카오</td><td>AI 풀스택 + 조달 채널 Lock-in</td><td>자체 LLM + 엔터프라이즈 레퍼런스</td><td class="center"><span class="tag tag-navy">지배적</span></td></tr>
+        <tr><td class="highlight">국산 LLM 독립 경쟁</td><td>네이버클라우드, 업스테이지, 포티투마루</td><td>모델 주권 포지셔닝</td><td>AI법 선점, 문서 특화, 환각 제어</td><td class="center"><span class="tag tag-blue">성장 중</span></td></tr>
+        <tr><td class="highlight">스타트업 버티컬 특화</td><td>이듬AI, 법틀, 코딧, 디어라운드</td><td>공공 문제 정밀 해결</td><td>도메인 특화, 빠른 PoC, 가격 경쟁력</td><td class="center"><span class="tag tag-yellow">부상 중</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-sub">3대 수요 신호 (Demand Signals)</div>
+    <div class="three-col">
+      <div class="highlight-box">
+        <div class="text-xs bold mb-4" style="color:var(--navy)">SIGNAL 01 · 보안 우선 구매</div>
+        CSAP, 폐쇄망, 국내 데이터 저장이 RFP <strong>선결 조건</strong>으로 굳어지는 중. 미충족 솔루션은 평가 단계에서 제외. AI 보안 솔루션의 "동반 구매" 관행 확산.
+      </div>
+      <div class="highlight-box">
+        <div class="text-xs bold mb-4" style="color:var(--navy)">SIGNAL 02 · 에이전트 업무 자동화</div>
+        단순 질의응답 AI를 넘어 "계획-실행-검증" Agent 도입이 요구됨. 공공 업무 프로세스(민원·문서 심사·정책 분석)의 <strong>구조적 재설계</strong> 수요 발생.
+      </div>
+      <div class="highlight-box">
+        <div class="text-xs bold mb-4" style="color:var(--navy)">SIGNAL 03 · AI 리터러시 제도화</div>
+        바이브 코딩 기관장 시연이 AI 챔피언 네트워크의 조직 변화관리 가능성 입증. 기술 수요와 함께 <strong>교육·제도화 수요</strong>가 병행 증가.
+      </div>
+    </div>
+
+    <div class="section-sub">기술 성숙도 평가 (Technology Maturity Assessment)</div>
+    <table>
+      <thead><tr>
+        <th>기술</th><th>성숙도</th><th>공공 적용 준비</th><th>핵심 근거</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="highlight">RAG / 지식 검색</td><td><span class="tag tag-green">Production</span></td><td>즉시 조달 가능</td><td>다수 기업 운영 레퍼런스 확보</td></tr>
+        <tr><td class="highlight">국산 LLM (SaaS)</td><td><span class="tag tag-green">Production</span></td><td>조달청 등록 완료</td><td>Exaone 8만명 95%, Kanana 4,500만 MAU</td></tr>
+        <tr><td class="highlight">Multi-Agent Orchestration</td><td><span class="tag tag-yellow">Early Prod.</span></td><td>파일럿·PoC 단계</td><td>이듬 AI, LG CNS AgenticWorks PoC</td></tr>
+        <tr><td class="highlight">Document AI (VLM/OCR)</td><td><span class="tag tag-yellow">Early Prod.</span></td><td>특정 도메인 적용</td><td>DEEP Agent 96% 정확도 (독립 검증 필요)</td></tr>
+        <tr><td class="highlight">AI Security / Guardrail</td><td><span class="tag tag-blue">Growing</span></td><td>동반 구매 필수</td><td>솔루션 급증, 표준화는 미성숙</td></tr>
+        <tr><td class="highlight">Synthetic Data Gen.</td><td><span class="tag tag-yellow">Early Prod.</span></td><td>도메인 특화 효과 검증</td><td>국민연금 POC 20%+ 성능 개선</td></tr>
+        <tr><td class="highlight">Vibe Coding / No-Code</td><td><span class="tag tag-red">Emerging</span></td><td>프로토타이핑 전용</td><td>운영 전환 거버넌스 미비</td></tr>
+        <tr><td class="highlight">Physical AI (로봇)</td><td><span class="tag tag-red">Emerging</span></td><td>재난·현장 한정</td><td>실운영 전환 시기 불확실</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col mt-8">
+      <div>
+        <div class="section-sub-sm">핵심 정책 환경: AI법 2026.8 시행</div>
+        <p class="text-sm">「인공지능 및 데이터 기반 행정 활성화에 관한 법률」 제27조 시행(2026.8)은 공공 AI 도입을 <strong>재량에서 정책 의무</strong>로 전환하는 분기점이다. 네이버클라우드가 CLOVA Studio for GOV를 통해 법령 시행 전 선점 포지셔닝에 나선 것이 대표적 시장 반응이다.</p>
+      </div>
+      <div>
+        <div class="section-sub-sm">2026 예산 집행 우선 영역</div>
+        <ul class="text-sm">
+          <li><strong>우선순위 1 (즉시)</strong> — Agentic 민원·행정 자동화 + AI 보안 동반 구매</li>
+          <li><strong>우선순위 2 (H2)</strong> — 국산 LLM 기반 SaaS 협업 플랫폼 전환</li>
+          <li><strong>우선순위 3 (2027)</strong> — 디지털 포용 AI + AI 거버넌스 플랫폼</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">2 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 3 — TOPIC 01 DEEP DIVE
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 03 · TOPIC 01 — AI 통합민원플랫폼 Deep Dive</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Topic 01 · 이듬 AI — "배려 행정" 원스톱 민원 자동화</div>
+
+    <div class="insight-box">
+      <div class="title">핵심 통찰 (Key Insight)</div>
+      <p>사망 후속 행정은 300개+ 분산 민원의 구조적 비극이다. 이듬 AI는 이를 AI Pipeline Orchestrator와 멀티에이전트 시스템으로 단 <strong style="color:#FFD700">15분</strong>에 완결하는 솔루션을 제시했다. 기술 효율화가 아닌 <strong style="color:#FFD700">"배려 행정"</strong>이라는 사회적 서사가 공공 조달 설득력의 핵심이다.</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-sub">문제 정의: 사망 후속 행정의 3대 고충</div>
+        <table>
+          <thead><tr><th>고통 유형</th><th>실질 비용</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">전체 로드맵 부재</td><td>법적·재정 손실 (기한 초과)</td></tr>
+            <tr><td class="highlight">서류·기관 분산</td><td>수일~수주 시간 비용, 연차 소진</td></tr>
+            <tr><td class="highlight">기한 준수 리스크</td><td>상속세 등 법정 기한 초과 시 가산세</td></tr>
+          </tbody>
+        </table>
+        <div class="callout mt-8">
+          핵심 페르소나: <strong>김민수(39세, 맞벌이 외동)</strong> — 부모 사망 후 300개+ 민원을 혼자 감당해야 하는 구조적 현실
+        </div>
+      </div>
+      <div>
+        <div class="section-sub">AS-IS vs TO-BE 비교</div>
+        <table>
+          <thead><tr><th>구분</th><th>AS-IS</th><th>TO-BE</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">연결성</td><td>단절·반복</td><td>자동 연결</td></tr>
+            <tr><td class="highlight">진행 파악</td><td>불가</td><td>실시간 추적</td></tr>
+            <tr><td class="highlight">서류 제출</td><td>기관마다 반복</td><td>원클릭 일괄</td></tr>
+            <tr><td class="highlight">소요 시간</td><td>수일~수주</td><td class="compare-leader">약 15분</td></tr>
+            <tr><td class="highlight">민원 범위</td><td>건건 처리</td><td class="compare-leader">300개+ 통합</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-sub">E2E 자동화 파이프라인 (8단계)</div>
+    <div class="pipeline">
+      <div class="pipeline-step">국민 접점<br>자연어 입력</div>
+      <div class="pipeline-arrow">▶</div>
+      <div class="pipeline-step">AI 접수<br>의도 분류</div>
+      <div class="pipeline-arrow">▶</div>
+      <div class="pipeline-step">분해·계획<br>태스크 생성</div>
+      <div class="pipeline-arrow">▶</div>
+      <div class="pipeline-step">병렬 실행<br>API 동시 호출</div>
+      <div class="pipeline-arrow">▶</div>
+      <div class="pipeline-step">취합·검증<br>결과 확인</div>
+      <div class="pipeline-arrow">▶</div>
+      <div class="pipeline-step">결과 안내<br>원클릭 제출</div>
+      <div class="pipeline-arrow">▶</div>
+      <div class="pipeline-step">피드백<br>완결 확인</div>
+    </div>
+
+    <div class="section-sub">3대 수혜자별 기대 효과</div>
+    <table>
+      <thead><tr><th>수혜자</th><th>기대 효과</th><th>정량 목표</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">국민 (Citizens)</td><td>비용·시간 절약, 기한 누락 방지, 로드맵 명확화</td><td>처리 시간 95% 단축, 누락 민원 0건</td></tr>
+        <tr><td class="highlight">정부 (Government)</td><td>민원 신뢰 제고, 행정 처리 효율화, 창구 인력 절감</td><td>반복 민원 응대 비용 절감</td></tr>
+        <tr><td class="highlight">사회 (Society)</td><td>고령사회·1인 가구 특화 배려 행정, 형평성 강화</td><td>취약계층 행정 접근성 향상</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-sub">생애주기 확장 로드맵</div>
+    <div class="roadmap">
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-header">Phase 1 (현재)</div>
+        <div class="roadmap-phase-body">
+          <ul>
+            <li>사망 후속 행정 원스톱</li>
+            <li>"민원 하나로" 앱 론칭</li>
+            <li>6개 파생 업무 15분 완결</li>
+            <li>MCP 프로토콜 초기 구축</li>
+          </ul>
+        </div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-header phase2">Phase 2 (2027)</div>
+        <div class="roadmap-phase-body">
+          <ul>
+            <li>출생 신고 연계 확장</li>
+            <li>결혼·이혼 행정 통합</li>
+            <li>이사·전입 원스톱</li>
+            <li>행안부·NIA 협치 구조 확립</li>
+          </ul>
+        </div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-header phase3">Phase 3 (2028+)</div>
+        <div class="roadmap-phase-body">
+          <ul>
+            <li>창업·폐업 행정 통합</li>
+            <li>Government Case Mgmt. Platform</li>
+            <li>범정부 표준 플랫폼 공식화</li>
+            <li>전 생애주기 커버리지 달성</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">3 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 4 — TOPIC 01 TECHNICAL ARCHITECTURE
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 04 · TOPIC 01 — Technical Architecture &amp; Risk</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Topic 01 · 기술 아키텍처 상세 &amp; 리스크 분석</div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-sub">멀티에이전트 시스템 구조</div>
+        <div class="agent-diagram">
+          <div class="agent-box orchestrator">AI Pipeline Orchestrator<br><span style="font-size:7.5pt;font-weight:400;opacity:0.85">중앙 제어 엔진 · E2E 워크플로 조율</span></div>
+          <div class="agent-connector"></div>
+          <div class="agent-sub-row">
+            <div class="agent-box sub">의도분류<br>에이전트</div>
+            <div class="agent-box sub">민원분해<br>에이전트</div>
+            <div class="agent-box sub">시스템연계<br>에이전트</div>
+            <div class="agent-box sub">검증·응답<br>에이전트</div>
+          </div>
+          <div style="font-size:7.5pt;color:var(--muted);margin-top:6px;">NLU / Intent → Task Decomposition → MCP API → Validation</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-sub">복잡도 기반 처리 경로</div>
+        <table>
+          <thead><tr><th>처리 경로</th><th>민원 유형</th><th class="center">에이전트</th><th>목표</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight compare-leader">Fast Path</td><td>단순 민원 (1~2건)</td><td class="center">2개</td><td>속도 우선 (~3분)</td></tr>
+            <tr><td class="highlight compare-strong">Standard Path</td><td>표준 복합 민원</td><td class="center">4개</td><td>균형 (~10분)</td></tr>
+            <tr><td class="highlight">Full Pipeline</td><td>고복잡도 복합 민원</td><td class="center">5개</td><td>정확도 최우선 (~15분)</td></tr>
+          </tbody>
+        </table>
+        <div class="callout mt-8">
+          <strong>운영 경제학 핵심</strong>: 불필요한 에이전트 활성화 없이 복잡도 비례 자원 투입 → 비용 통제 + 품질 유지 동시 달성
+        </div>
+      </div>
+    </div>
+
+    <div class="section-sub">MCP 표준 전략: 플랫폼 생태계 장악</div>
+    <table>
+      <thead><tr><th>연동 대상</th><th>AS-IS</th><th>MCP 연동 후</th><th class="center">전략적 의미</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">정부24</td><td>별도 로그인·접속</td><td>단일 프로토콜 자동 연결</td><td class="center"><span class="tag tag-green">핵심</span></td></tr>
+        <tr><td class="highlight">국민신문고</td><td>수동 접수</td><td>API 자동 제출</td><td class="center"><span class="tag tag-green">핵심</span></td></tr>
+        <tr><td class="highlight">홈택스</td><td>별도 공인인증</td><td>원클릭 세금 신고</td><td class="center"><span class="tag tag-yellow">중요</span></td></tr>
+        <tr><td class="highlight">지자체 시스템</td><td>개별 연동 불가</td><td>모듈 확장 자동 추가</td><td class="center"><span class="tag tag-blue">확장</span></td></tr>
+      </tbody>
+    </table>
+    <div class="warning-box">
+      <strong>전략적 임계점</strong>: MCP 표준이 공공 행정에 공식 채택될 경우 이듬 AI는 모든 부처·지자체 연동의 <strong>핵심 인프라 공급자</strong> 지위를 확보한다. 이는 서비스 제공자에서 공공 AI 인프라 표준 보유자로 격상되는 게임 체인저다.
+    </div>
+
+    <div class="section-sub">리스크 분석 매트릭스</div>
+    <table>
+      <thead><tr><th>리스크</th><th>내용</th><th class="center">발생 확률</th><th class="center">임팩트</th><th>대응 방안</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">기술 성숙도</td><td>실연동(홈택스·안심상속) POC 수준, 생산 미달</td><td class="center"><span class="tag tag-red">높음</span></td><td class="center"><span class="tag tag-red">높음</span></td><td>단계적 파일럿, 독립 검증</td></tr>
+        <tr><td class="highlight">보안·개인정보</td><td>사망 정보 등 극도로 민감한 개인정보 처리</td><td class="center"><span class="tag tag-yellow">중간</span></td><td class="center"><span class="tag tag-red">매우 높음</span></td><td>ISMS-P, 개인정보 처리방침 사전 설계</td></tr>
+        <tr><td class="highlight">거버넌스 충돌</td><td>정부24·국민신문고와 역할 중복 가능성</td><td class="center"><span class="tag tag-red">높음</span></td><td class="center"><span class="tag tag-yellow">중간</span></td><td>행안부·NIA 협치 구조 선행 설계</td></tr>
+        <tr><td class="highlight">조달 경로</td><td>범정부 표준화 없이 개별 부처 조달 한계</td><td class="center"><span class="tag tag-yellow">중간</span></td><td class="center"><span class="tag tag-red">높음</span></td><td>MCP 표준 행안부 승인 추진</td></tr>
+        <tr><td class="highlight">사용자 수용성</td><td>디지털 취약 계층(노인)의 자연어 AI 장벽</td><td class="center"><span class="tag tag-red">높음</span></td><td class="center"><span class="tag tag-yellow">중간</span></td><td>오프라인 연계 하이브리드 모드</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-sub-sm">도입 권고 체크리스트 (CIO용)</div>
+    <div class="two-col text-sm">
+      <ul>
+        <li>"민원 하나로" PoC 적용 민원 유형 우선순위 선정</li>
+        <li>정부24 API 연동 승인 주체(행안부) 사전 협의</li>
+        <li>MCP 프로토콜 표준화 참여 의향 확인 (NIA)</li>
+      </ul>
+      <ul>
+        <li>개인정보 처리방침 법무 검토 (사망 정보 특화)</li>
+        <li>15분 완결 목표의 독립적 성능 검증 계획 수립</li>
+        <li>ISMS-P 인증 여부 및 보안 아키텍처 확인</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">4 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 5 — TOPIC 03 DEEP DIVE
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 05 · TOPIC 03 — LG CNS Exaone 4.5 Deep Dive</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Topic 03 · LG CNS Exaone 4.5 — "소형 모델, 대형 성능"</div>
+
+    <div class="insight-box">
+      <div class="title">핵심 통찰 (Key Insight)</div>
+      <p>Exaone 4.5의 포지셔닝은 단 하나: <strong style="color:#FFD700">"트릴리언 파라미터 빅모델에 준하는 성능을 소형 모델로."</strong> LG 8만 임직원 95% 사용이라는 <strong style="color:#FFD700">실사용 레퍼런스</strong>가 공공 조달 의사결정 리스크를 낮추는 가장 강력한 무기다. 공공 온프레미스 환경의 GPU 자원 제약을 소형 모델 전략으로 정면 돌파한다.</p>
+    </div>
+
+    <div class="section-sub">모델 아키텍처: 4대 핵심 기술 혁신</div>
+    <table>
+      <thead><tr><th>기술 요소</th><th>기존 대비 혁신 내용</th><th>공공 적용 가치</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">하이브리드 어텐션</td><td>로컬+글로벌 윈도우 혼합 → 256K 컨텍스트 처리</td><td>방대한 법령·규정 문서 단일 처리 가능</td></tr>
+        <tr><td class="highlight">GQA + KV 캐시 최적화</td><td>행렬 곱 공유, 중복 연산 제거 → 추론 속도 향상</td><td>온프레미스 GPU 제약 공공 환경 최적화</td></tr>
+        <tr><td class="highlight">멀티 토큰 예측</td><td>여러 토큰 동시 생성 → 응답 속도 향상</td><td>실시간 행정 업무 지원에 직결</td></tr>
+        <tr><td class="highlight">19조 토큰 프리트레이닝</td><td>14T → 19T (35% 확장)</td><td>전문 도메인 추론·문제 해결력 강화</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <div class="section-sub">Chat Exaone 엔터프라이즈 검증 지표</div>
+        <table>
+          <thead><tr><th>지표</th><th>수치</th></tr></thead>
+          <tbody>
+            <tr><td>도입 주체</td><td class="highlight compare-leader">LG 그룹 사무직 전체</td></tr>
+            <tr><td>사용률</td><td class="highlight compare-leader">8만명 중 95%+</td></tr>
+            <tr><td>도입 기간</td><td>2024.12 POC → 18개월</td></tr>
+            <tr><td>문서 성능</td><td>GPT-5와 평균 동급</td></tr>
+            <tr><td>에이전트 성능</td><td class="highlight compare-leader">파워벤치 23→70점 (+47)</td></tr>
+            <tr><td>소형 모델 우위</td><td>QN3 235B 대비 32B 우수</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-sub">3대 차별화 기능</div>
+        <div class="highlight-box mb-4">
+          <div class="text-xs bold mb-4" style="color:var(--navy)">1. 심층 리서치 (Deep Research)</div>
+          하위 쿼리 분해 → 웹/문서 검색 → 피드백 → 반복 → 최종 리포트. 정책 분석, 규제 검토, 예산 조사에 직결.
+        </div>
+        <div class="highlight-box mb-4">
+          <div class="text-xs bold mb-4" style="color:var(--navy)">2. 캔버스 모드 (Canvas Mode)</div>
+          텍스트 캔버스(공문서 작성) + 코드 캔버스(파이썬 실행→수정). 행정 문서 작성 생산성 혁신.
+        </div>
+        <div class="highlight-box">
+          <div class="text-xs bold mb-4" style="color:var(--navy)">3. Data Foundry</div>
+          AI 자동 생성 → 검수. <strong>국민연금 POC: 20%+ 성능 개선.</strong> AI 데이터가 인간 생성 대비 10%+ 우위.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-sub">공공 도입 3채널 전략</div>
+    <table>
+      <thead><tr><th>채널</th><th>내용</th><th>대상 기관</th><th class="center">보안 수준</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">조달청 디지털서비스몰 PP존</td><td>정부·지자체 수의계약 구매 가능</td><td>중소 규모 지자체</td><td class="center"><span class="tag tag-yellow">표준</span></td></tr>
+        <tr><td class="highlight">SaaS (클라우드)</td><td>클라우드 기반 즉시 사용</td><td>보안 요건 완화 공공기관</td><td class="center"><span class="tag tag-yellow">표준</span></td></tr>
+        <tr><td class="highlight">온프레미스</td><td>LG CNS 통해 설치형 패키지</td><td>폐쇄망·보안 최우선 기관</td><td class="center"><span class="tag tag-green">최고</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-sub">한컴 제휴: 공공 문서 생태계 표준 선점</div>
+    <table>
+      <thead><tr><th>해결 과제</th><th>현행 문제</th><th>Chat Exaone + 한컴 솔루션</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">한글 서식 깨짐</td><td>HWP 문서 AI 처리 오류</td><td>서식 맞춤·교정 자동화</td></tr>
+        <tr><td class="highlight">법조문 비교</td><td>수백 페이지 수동 비교</td><td>심층 리서치 + 캔버스 최종본 작성</td></tr>
+        <tr><td class="highlight">문서 검토 부담</td><td>검토 시간 과다</td><td>멀티 문서 기반 QA 자동화</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>전략적 함의</strong>: 한컴은 공공 한글 문서의 사실상 표준(De Facto). Chat Exaone × 한컴 연동 완성 시 공공 업무의 <strong>구조적 Lock-in</strong> 달성 — 단순 협력을 넘어 공공 시장 표준 선점 전략.
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">5 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 6 — TOPIC 03 STRATEGIC ANALYSIS
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 06 · TOPIC 03 — Strategic Analysis &amp; Competitive Intelligence</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Topic 03 · 전략 분석 — 국산 LLM 경쟁 지형과 Exaone의 포지션</div>
+
+    <div class="section-sub">국산 LLM 4사 경쟁 비교 분석</div>
+    <table>
+      <thead><tr>
+        <th>비교 항목</th>
+        <th>Exaone 4.5 (LG CNS)</th>
+        <th>Kanana (Kakao)</th>
+        <th>Solar Pro 3 (Upstage)</th>
+        <th>CLOVA GOV (Naver)</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="highlight">모델 규모</td><td class="compare-leader">32B (소형 고성능)</td><td>미공개</td><td>Pro 3 (추론 특화)</td><td>미공개</td></tr>
+        <tr><td class="highlight">공공 채널</td><td class="compare-leader">조달청 PP존 (등록 완료)</td><td>AI 국민비서·카카오톡</td><td>문서 특화 B2G</td><td>AI법 선점 (2026.8)</td></tr>
+        <tr><td class="highlight">핵심 강점</td><td class="compare-leader">기업 실증, 문서AI, Data Foundry</td><td>4,500만 MAU 플랫폼</td><td>Document Parse 특화</td><td>법제화 타이밍 선점</td></tr>
+        <tr><td class="highlight">보안 인증</td><td>국정원 지침, 한국 저장</td><td>한국어 Safeguard</td><td>별도 확인 필요</td><td>CSAP 진행 중</td></tr>
+        <tr><td class="highlight">공공 레퍼런스</td><td class="compare-leader">LG 8만명 95% (실사용)</td><td>행안부 공식 협력</td><td>문서 파싱 도메인</td><td>정부 B2G 협력</td></tr>
+        <tr><td class="highlight">차별화 포인트</td><td class="compare-leader">Data Foundry 도메인 특화</td><td>선톡(능동형 제안)</td><td>OCR+구조 분석</td><td>행정 AI법 타이밍</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>McKinsey 분석</strong>: Exaone은 <strong>기업 실증 레퍼런스 + Data Foundry 도메인 특화 + 조달청 PP존</strong>의 삼중 우위로 공공 온프레미스 시장에서 가장 강력한 포지션을 보유한다.
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-sub">Data Foundry 4단계 학습 프로세스</div>
+        <table>
+          <thead><tr><th>단계</th><th>내용</th><th>핵심 도구</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">1. 프리트레이닝</td><td>대규모 텍스트 다음 토큰 예측</td><td>19T 토큰</td></tr>
+            <tr><td class="highlight">2. 포스트트레이닝</td><td>도메인 특화 문서 읽기</td><td>법령·행정 문서</td></tr>
+            <tr><td class="highlight">3. 디스틸레이션</td><td>문제집 생성·풀이</td><td>Data Foundry (AI)</td></tr>
+            <tr><td class="highlight">4. RLHF</td><td>인간 선호 답변 강화</td><td>Data Foundry (검수)</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box mt-8">
+          <strong>공공 병목 해소</strong>: 방대한 법령 문서 + 레이블링 인력 부족 → Data Foundry의 "AI 자동 생성 → 최소 검수" 방식으로 정확히 해소
+        </div>
+      </div>
+      <div>
+        <div class="section-sub">Exaone 4.5 리스크 분석</div>
+        <table>
+          <thead><tr><th>리스크</th><th class="center">심각도</th><th>대응</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">벤치마크 독립성 부재</td><td class="center"><span class="tag tag-yellow">중간</span></td><td>제3자 독립 검증 요청</td></tr>
+            <tr><td class="highlight">도메인 분산 (금융·바이오)</td><td class="center"><span class="tag tag-green">낮음</span></td><td>공공 전용 로드맵 명확화</td></tr>
+            <tr><td class="highlight">한컴·식약처 미완성</td><td class="center"><span class="tag tag-yellow">중간</span></td><td>파일럿 기간 충분 확보</td></tr>
+            <tr><td class="highlight">글로벌 모델 갱신 속도</td><td class="center"><span class="tag tag-yellow">중간</span></td><td>도메인 특화로 격차 보완</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-sub-sm mt-12">Exaone PANS: 공공 보건 함의</div>
+        <table>
+          <thead><tr><th>항목</th><th>내용</th></tr></thead>
+          <tbody>
+            <tr><td>기술</td><td>폐 조직 이미지 암세포·면역세포 분류</td></tr>
+            <tr><td>성과</td><td>글로벌 SOTA 1위 (2025, MS/Harvard-Net)</td></tr>
+            <tr><td>공공 연계</td><td>식약처 의약 심사 과제 (2026 완료 목표)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-sub">공공기관 도입 로드맵: Exaone 3단계</div>
+    <div class="roadmap">
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-header">Phase 1 · Pilot (2026 Q3-Q4)</div>
+        <div class="roadmap-phase-body">
+          <ul>
+            <li>Chat Exaone SaaS 부서 단위 구독</li>
+            <li>심층 리서치·캔버스 기능 활용</li>
+            <li>사용 패턴 파악 및 레퍼런스 확보</li>
+          </ul>
+        </div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-header phase2">Phase 2 · Expansion (2027 H1)</div>
+        <div class="roadmap-phase-body">
+          <ul>
+            <li>Data Foundry 기관 특화 학습</li>
+            <li>온프레미스 전환 검토 (폐쇄망)</li>
+            <li>도메인 성능 20%+ 개선 목표</li>
+          </ul>
+        </div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-header phase3">Phase 3 · Scale (2027 H2+)</div>
+        <div class="roadmap-phase-body">
+          <ul>
+            <li>한컴 공문서 에이전트 연동</li>
+            <li>전 기관 표준 플랫폼화</li>
+            <li>업무 자동화율 30%+ 달성</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">6 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 7 — TOPIC 03 GLOBAL AI BENCHMARKING & SOVEREIGN AI
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 07 · TOPIC 03 — 글로벌 AI 비교 &amp; Sovereign AI 전략</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Topic 03 확장 · 글로벌 AI Big 3 비교 &amp; Sovereign AI 전략</div>
+
+    <div class="insight-box">
+      <div class="title">분석 프레임 (Analysis Framework)</div>
+      <p>글로벌 AI 모델과의 비교는 단순 기술 벤치마크가 아닌 <strong style="color:#FFD700">공공 조달 가능성(Procurability)</strong>과 <strong style="color:#FFD700">데이터 주권(Data Sovereignty)</strong> 관점에서 수행해야 한다. 기술 점수 1위 모델이 아닌, 한국 공공기관이 <strong style="color:#FFD700">실제로 조달하고 운영할 수 있는</strong> 모델이 승자다.</p>
+    </div>
+
+    <div class="section-sub">Exaone 4.5 vs 글로벌 Big 3 — 공공 조달 관점 직접 비교</div>
+    <table>
+      <thead><tr>
+        <th>비교 차원</th>
+        <th>Exaone 4.5 (LG CNS)</th>
+        <th>GPT-4o (OpenAI)</th>
+        <th>Claude Sonnet (Anthropic)</th>
+        <th>Gemini 1.5 Pro (Google)</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="highlight">컨텍스트 길이</td><td>256K 토큰</td><td>128K 토큰</td><td>200K 토큰</td><td>1M 토큰</td></tr>
+        <tr><td class="highlight">한국어 특화</td><td class="compare-leader">★★★★★ 전용 최적화</td><td>★★★☆☆ 범용</td><td>★★★☆☆ 범용</td><td>★★★☆☆ 범용</td></tr>
+        <tr><td class="highlight">공공 조달 경로</td><td class="compare-leader">조달청 PP존 <strong>등록 완료</strong></td><td class="compare-weak">직접 조달 <strong>불가</strong></td><td class="compare-weak">직접 조달 <strong>불가</strong></td><td class="compare-weak">직접 조달 <strong>불가</strong></td></tr>
+        <tr><td class="highlight">데이터 저장 위치</td><td class="compare-leader"><strong>한국 내 서버 보장</strong></td><td class="compare-weak">미국 서버</td><td class="compare-weak">미국 서버</td><td class="compare-weak">미국/EU 서버</td></tr>
+        <tr><td class="highlight">온프레미스 설치</td><td class="compare-leader"><strong>가능</strong> (LG CNS 제공)</td><td class="compare-weak">불가 (API 전용)</td><td class="compare-weak">불가 (API 전용)</td><td class="compare-weak">불가 (API 전용)</td></tr>
+        <tr><td class="highlight">CSAP 인증</td><td class="compare-leader"><strong>취득 가능</strong></td><td class="compare-weak">불가</td><td class="compare-weak">불가</td><td class="compare-weak">불가</td></tr>
+        <tr><td class="highlight">국정원 지침 준수</td><td class="compare-leader"><strong>준수</strong></td><td class="compare-weak">미충족</td><td class="compare-weak">미충족</td><td class="compare-weak">미충족</td></tr>
+        <tr><td class="highlight">행정 문서 (HWP)</td><td class="compare-leader">한컴 제휴 <strong>특화 지원</strong></td><td class="compare-weak">미지원</td><td class="compare-weak">미지원</td><td class="compare-weak">미지원</td></tr>
+        <tr><td class="highlight">도메인 특화 학습</td><td class="compare-leader">Data Foundry 자동화</td><td>Fine-tuning (고가)</td><td>Fine-tuning (제한)</td><td>Fine-tuning (고가)</td></tr>
+        <tr><td class="highlight">문서 업무 성능</td><td>GPT-5 동급 <span class="text-xs text-muted">(자사 측정)</span></td><td class="compare-leader">최상위권</td><td class="compare-leader">최상위권</td><td class="compare-leader">최상위권</td></tr>
+        <tr><td class="highlight">공공 조달 종합</td><td class="compare-leader"><strong>★★★★★</strong></td><td class="compare-weak">★☆☆☆☆</td><td class="compare-weak">★☆☆☆☆</td><td class="compare-weak">★☆☆☆☆</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>핵심 결론</strong>: Exaone의 절대 기술 우위는 논란의 여지가 있다. 그러나 <strong>공공 조달 가능성 + 데이터 주권 + 한국어 특화</strong>의 3중 조건을 동시에 충족하는 모델은 현재 Exaone이 유일하다. 이는 기술 경쟁이 아닌 <strong>규제 해자(Regulatory Moat) 전략</strong>이다. <span class="text-xs text-muted">*글로벌 모델 지표는 공개 자료 기반 추정. Exaone 자사 측정치는 독립 검증 필요.</span>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-sub">Sovereign AI — 한국 4대 주권 축</div>
+        <table>
+          <thead><tr><th>주권 영역</th><th>Exaone 4.5 충족</th><th>해외 모델 한계</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">데이터 주권</td><td class="compare-leader">전 데이터 한국 내 저장</td><td>해외 서버 전송 → 지침 위반</td></tr>
+            <tr><td class="highlight">모델 주권</td><td class="compare-leader">LG AI연구원 100% 소유</td><td>OpenAI·Google 귀속, 공개 불가</td></tr>
+            <tr><td class="highlight">컴퓨팅 주권</td><td class="compare-leader">온프레미스 설치 가능</td><td>해외 클라우드 의존 탈출 불가</td></tr>
+            <tr><td class="highlight">거버넌스 주권</td><td class="compare-leader">국정원 지침·AI법 준수</td><td>해외 법령 우선, 감사 추적 어려움</td></tr>
+          </tbody>
+        </table>
+        <div class="warning-box mt-8">
+          <strong>규제 해자 (Regulatory Moat)</strong>: AI법(2026.8) 시행 이후 해외 클라우드 AI 사용 시 데이터 역외 이전이 법적·감사 리스크로 직결된다. 이 장벽은 기술력으로 극복 불가한 Exaone의 가장 강력한 구조적 우위다.
+        </div>
+      </div>
+      <div>
+        <div class="section-sub">한국 엔터프라이즈 AI 시장 포지셔닝</div>
+        <div class="section-sub-sm">공공 적합성 × 기술 역량 매트릭스</div>
+        <table>
+          <thead><tr><th></th><th>기술 역량 高</th><th>기술 역량 中</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="highlight">공공 적합성 高</td>
+              <td class="compare-leader"><strong>Exaone 4.5</strong> ← 목표</td>
+              <td>CLOVA Studio GOV</td>
+            </tr>
+            <tr>
+              <td class="highlight">공공 적합성 中</td>
+              <td>Kanana, Solar Pro 3</td>
+              <td>포티투마루 RAG42</td>
+            </tr>
+            <tr>
+              <td class="highlight">공공 적합성 低</td>
+              <td class="compare-weak">GPT-4o, Claude, Gemini<br><span class="text-xs">(조달 불가)</span></td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="section-sub-sm mt-8">세그먼트별 LG CNS 포지션</div>
+        <table>
+          <thead><tr><th>세그먼트</th><th>포지션</th><th>우선순위</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">공공·행정</td><td>최우선 공략 (PP존+한컴)</td><td><span class="tag tag-red">★★★★★</span></td></tr>
+            <tr><td class="highlight">LG 그룹 내부</td><td>사실상 독점 (8만명 실증)</td><td><span class="tag tag-red">★★★★★</span></td></tr>
+            <tr><td class="highlight">대기업 제조</td><td>성장 중 (Data Foundry)</td><td><span class="tag tag-yellow">★★★★☆</span></td></tr>
+            <tr><td class="highlight">금융</td><td>진입 단계 (XOV BI)</td><td><span class="tag tag-blue">★★★☆☆</span></td></tr>
+            <tr><td class="highlight">바이오·헬스</td><td>특화 공략 (PANS SOTA)</td><td><span class="tag tag-blue">★★★☆☆</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="rec-box" style="margin-top:10px;">
+      <div class="rec-header">McKinsey 최종 권고 — LG CNS의 승리 방정식</div>
+      <div class="rec-body"><strong>공공 + LG 내부 + 제조</strong>의 3개 세그먼트에서 레퍼런스를 독점하고, 이를 기반으로 금융·헬스케어로 단계 확장하라. 글로벌 모델 대비 기술 격차는 도메인 특화로 역전 가능하나, <strong>규제 해자는 경쟁자가 넘기 가장 어려운 구조적 우위</strong>이므로 Sovereign AI 포지셔닝을 최우선 세일즈 메시지로 유지해야 한다.</div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">7 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 8 — TOPIC 04 DEEP DIVE
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 08 · TOPIC 04 — Kakao Kanana Deep Dive</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Topic 04 · 카카오 카나나 — "4,500만 플랫폼에 AI를 내재화한다"</div>
+
+    <div class="insight-box">
+      <div class="title">핵심 통찰 (Key Insight)</div>
+      <p>카나나의 전략적 우위는 기술이 아닌 <strong style="color:#FFD700">플랫폼</strong>에 있다. 어떤 AI 서비스도 카카오톡만큼 낮은 진입 장벽을 가질 수 없다. 4,500만 MAU가 이미 사용 중인 앱에 AI를 심는다는 전략은 채택 마찰을 제로에 가깝게 만든다. 단, 4개 기능의 <strong style="color:#FFD700">통합 내러티브가 부재</strong>한 것이 이번 시연의 구조적 약점이었다.</p>
+    </div>
+
+    <div class="section-sub">4대 핵심 기능 분석</div>
+    <table>
+      <thead><tr>
+        <th>기능</th><th>핵심 메커니즘</th><th>차별점</th><th>공공 적용 가치</th><th class="center">성숙도</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="highlight">카나나 (선톡)</td>
+          <td>대화 맥락 분석 → 선제적 정보 제안 (사용자 요청 불필요)</td>
+          <td>수동 응답 AI vs <strong>능동 개입 AI</strong></td>
+          <td>민원인 니즈 선제 파악, 민원 처리 선제 안내</td>
+          <td class="center"><span class="tag tag-yellow">베타</span></td>
+        </tr>
+        <tr>
+          <td class="highlight">대화/통화 요약</td>
+          <td>안 읽은 메시지·보이스톡 AI 자동 요약, 텍스트 변환</td>
+          <td>정보 과부하의 <strong>구조적 해소</strong></td>
+          <td>원격 회의 기록 자동화, 민원 통화 문서화</td>
+          <td class="center"><span class="tag tag-green">운영</span></td>
+        </tr>
+        <tr>
+          <td class="highlight">AI 국민비서</td>
+          <td>음성 명령으로 전자증명서 발급·공공시설 예약</td>
+          <td>행안부 공식 협력 기반 <strong>원스톱</strong></td>
+          <td>정부24·공유누리 접근성 100% 개선</td>
+          <td class="center"><span class="tag tag-green">운영</span></td>
+        </tr>
+        <tr>
+          <td class="highlight">세이프가드</td>
+          <td>피싱·욕설·유해 요청 필터링, 부적절 답변 차단</td>
+          <td><strong>한국어·문화 특화</strong> 가드레일</td>
+          <td>공공기관 AI 책임 리스크 기술적 해소</td>
+          <td class="center"><span class="tag tag-green">운영</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <div class="section-sub">AI 국민비서: 공공 접근성 혁신</div>
+        <table>
+          <thead><tr><th>서비스</th><th>AS-IS</th><th>TO-BE</th></tr></thead>
+          <tbody>
+            <tr><td>전자증명서</td><td>정부24 별도 접속</td><td class="compare-leader">카톡 음성 즉시 발급</td></tr>
+            <tr><td>공공시설 예약</td><td>공유누리 별도 가입</td><td class="compare-leader">카톡 내 대화로 예약</td></tr>
+            <tr><td>진입점</td><td>앱·웹 다수 분산</td><td class="compare-leader">일상 메신저 단일 창구</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box mt-8">
+          <strong>Lock-in 논리</strong>: 공공 서비스가 카카오톡 안에서 완결될수록 타 플랫폼 이탈 이유가 사라진다. 단, 민간 서비스 확장 없이는 Lock-in 효과 제한적.
+        </div>
+      </div>
+      <div>
+        <div class="section-sub">SWOT 분석</div>
+        <div class="matrix-grid">
+          <div class="matrix-cell strength">
+            <div class="matrix-label">강점 (S)</div>
+            4,500만 MAU 즉시 도달 · 행안부 공식 협력 · 한국어 Safeguard · 선톡 차별화
+          </div>
+          <div class="matrix-cell weakness">
+            <div class="matrix-label">약점 (W)</div>
+            4기능 통합 시나리오 부재 · 공공 한정, 민간 확장 미완 · 개인 대화 AI 읽기 거부감
+          </div>
+          <div class="matrix-cell opportunity">
+            <div class="matrix-label">기회 (O)</div>
+            AI법 시행 후 공공 서비스 카톡 통합 확대 · 슈퍼앱 포지션 강화 가능성
+          </div>
+          <div class="matrix-cell threat">
+            <div class="matrix-label">위협 (T)</div>
+            대화 맥락 수집 개인정보 이슈 · 경쟁 메신저의 공공 공략 (네이버웍스 등)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-sub">핵심 전략 약점: 통합 내러티브의 부재</div>
+    <div class="warning-box">
+      <strong>McKinsey 진단</strong>: 이번 시연의 구조적 약점은 4가지 기능이 독립적으로 나열됐다는 점이다. 이 기능들이 어떻게 함께 작동해 사용자 경험을 근본적으로 바꾸는지 <strong>통합 시나리오가 부재</strong>했다.<br>
+      <strong>필요한 내러티브</strong>: "카나나는 당신의 카카오톡을 읽고 대신 행동하는 AI 비서다. 선물도 사고, 서류도 발급하고, 회의도 요약한다." — 이 한 문장이 부재했다.
+    </div>
+
+    <div class="section-sub">공공기관 도입 권고사항</div>
+    <table>
+      <thead><tr><th>권고</th><th>내용</th><th class="center">우선순위</th></tr></thead>
+      <tbody>
+        <tr><td class="highlight">AI 국민비서 우선 도입</td><td>행안부 승인 기반, 정부24·공유누리 연동 즉시 활용 가능</td><td class="center"><span class="tag tag-red">최우선</span></td></tr>
+        <tr><td class="highlight">Safeguard 커스터마이징</td><td>기관별 유해 콘텐츠 기준 커스터마이징 요청</td><td class="center"><span class="tag tag-yellow">높음</span></td></tr>
+        <tr><td class="highlight">선톡 빈도 조정 협의</td><td>민원 채널 내 선톡은 민원인 혼란 유발 → 공공 전용 설정 필요</td><td class="center"><span class="tag tag-yellow">높음</span></td></tr>
+        <tr><td class="highlight">데이터 거버넌스 확인</td><td>대화 맥락 수집·처리의 개인정보 처리방침 법무 검토</td><td class="center"><span class="tag tag-blue">필수</span></td></tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="page-footer">
+    <span>2026 공공AI 박람회 기술 트렌드 리포트 (확장판) · Confidential for Internal Review</span>
+    <span class="page-num">8 / 9</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+  PAGE 8 — 2027 OUTLOOK AND RECOMMENDATIONS
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="report-title">2026 공공AI 박람회 기술 트렌드 리포트 (확장판 8p)</div>
+    <div class="page-label">PAGE 09 · 2027 OUTLOOK &amp; RECOMMENDATIONS</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">2027 전망 &amp; 전략적 권고 — 승자를 가르는 3가지 기준</div>
+
+    <div class="section-sub">2027 5대 예측 영역</div>
+    <div class="outlook-grid">
+      <div class="outlook-card">
+        <div class="outlook-card-header">예측 1 · 공공 에이전트 프로토콜 표준화</div>
+        <div class="outlook-card-body">이듬 AI MCP vs LG CNS AgenticWorks 경쟁이 <strong>행안부·NIA 주도 공공 에이전트 표준 프로토콜</strong> 논의를 촉발. 2027년 내 표준 초안 등장 가능성. 시나리오: 단일 표준(30%), 복수 표준 경쟁(50%), 지연(20%).</div>
+      </div>
+      <div class="outlook-card">
+        <div class="outlook-card-header">예측 2 · 국산 LLM 우선 조달 가이드라인</div>
+        <div class="outlook-card-body">AI법 제27조 시행(2026.8) 후 6~12개월 내 <strong>"공공기관 AI 도입 시 국산 LLM 우선 검토"</strong> 가이드라인 등장 예상. Exaone·Kanana·Solar·CLOVA 4파전 본격화.</div>
+      </div>
+      <div class="outlook-card">
+        <div class="outlook-card-header">예측 3 · Vibe Coding 제도화</div>
+        <div class="outlook-card-body">기관장 바이브 코딩 시연이 <strong>AI 챔피언 제도 법제화</strong>를 향한 정치적 동력 제공. 2027년 내 비개발자 AI 도구 공식 업무 사용 허가 가이드라인 등장 예상.</div>
+      </div>
+      <div class="outlook-card">
+        <div class="outlook-card-header">예측 4 · 공공 AI 보안 통합 플랫폼</div>
+        <div class="outlook-card-body">분산된 보안 솔루션(AI 보안·접근제어·감사 추적)에 대한 통합 압력 증가. <strong>공공 전용 AI 보안 플랫폼</strong>이라는 새로운 시장 카테고리 생성 예상.</div>
+      </div>
+    </div>
+    <div class="outlook-card" style="margin-top:8px;">
+      <div class="outlook-card-header">예측 5 · 디지털 포용 AI 법제화</div>
+      <div class="outlook-card-body">E 카테고리 접근성 솔루션 18개사 집중은 시장 선행 지표. 배리어프리 키오스크, 수어 AI, AI 점자 프린터 등 <strong>공공 서비스 접근성 AI의 법제화</strong>가 2027년 이후 구체화될 것.</div>
+    </div>
+
+    <div class="section-sub">3계층 핵심 권고사항</div>
+    <div class="rec-box">
+      <div class="rec-header">기관장 · 정책 결정자 → "AI 챔피언 네트워크를 조직 변화관리 엔진으로 활용하라"</div>
+      <div class="rec-body">바이브 코딩이 증명한 것은 AI 진입 장벽이 이미 낮아졌다는 사실이다. 이제 장벽은 기술이 아니라 <strong>제도와 거버넌스</strong>다. 기관장이 먼저 PoC를 경험하고 조직에 공유할 때, AI 전환의 정치적 저항이 가장 빠르게 무너진다.</div>
+    </div>
+    <div class="rec-box">
+      <div class="rec-header">CIO / CDO / IT 전략팀 → "Agentic AI + 국산 LLM + AI 보안을 하나의 아키텍처로 설계하라"</div>
+      <div class="rec-body">세 가지를 별도 사업으로 추진하면 통합 비용과 보안 공백이 기하급수적으로 증가한다. 에이전트 오케스트레이션 레이어, 국산 LLM 추론 레이어, AI 가드레일 보안 레이어를 <strong>처음부터 통합 아키텍처</strong>로 설계해야 한다. 사후 보완은 3배 이상의 비용이 발생한다.</div>
+    </div>
+    <div class="rec-box">
+      <div class="rec-header">벤더 / 솔루션 공급자 → "글로벌 벤치마크 1위보다 공공 PoC 성공 1건이 더 중요하다"</div>
+      <div class="rec-body">CSAP 인증, 폐쇄망 지원, 한국어 특화, 공공 레퍼런스 없이 공공 시장 진입은 구조적으로 불가능하다. 국민연금 POC 20% 개선 사례처럼 <strong>검증된 도메인 레퍼런스</strong>가 조달 의사결정에 가장 큰 영향을 미친다.</div>
+    </div>
+
+    <div class="section-sub">기관 도입 로드맵 (3단계)</div>
+    <table>
+      <thead><tr><th>단계</th><th>기간</th><th>핵심 행동</th><th>담당</th><th>기대 성과</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="highlight compare-leader">Phase 1<br>즉시 실행</td>
+          <td>2026 H2</td>
+          <td>Agentic AI PoC 1건 착수 · LLM+보안 패키지 조달 · AI 챔피언 5~10명 지정 · AI 거버넌스 초안 수립</td>
+          <td>CIO + 기관장</td>
+          <td>활용 케이스 발굴, 내부 변화관리 채널 구축</td>
+        </tr>
+        <tr>
+          <td class="highlight compare-strong">Phase 2<br>확장</td>
+          <td>2027</td>
+          <td>PoC → 운영 서비스 전환 · Data Foundry 기관 특화 학습 · AI 국민비서 확대 · 거버넌스 감사 1회</td>
+          <td>IT전략팀 + 대국민서비스</td>
+          <td>자동화율 15%+, 민원 처리 50% 단축</td>
+        </tr>
+        <tr>
+          <td class="highlight">Phase 3<br>성숙·표준화</td>
+          <td>2028+</td>
+          <td>멀티에이전트 기관 간 연동(MCP 표준) · AI 성숙도 평가 제도 · 접근성 AI 전면 도입</td>
+          <td>행안부·NIA 협력</td>
+          <td>범정부 서비스 통합, 디지털 포용 법적 요건 충족</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box" style="margin-top:14px;">
+      <div class="title">최종 결론 — 승자를 가르는 3가지 기준</div>
+      <p>2026 공공AI 박람회가 선언한 핵심 메시지: 공공 AI는 <strong style="color:#FFD700">"도입할 것인가"를 넘어 "어떻게 제대로 운영할 것인가"로 진입</strong>했다. 승자를 가르는 기준은 세 가지다:</p>
+      <p style="margin-top:10px;color:rgba(255,255,255,0.9);">
+        <strong style="color:#FFD700">①</strong> 에이전트 자율성 (Agentic Capability) — 계획-실행-검증 루프를 자율 반복하는 진정한 에이전트인가<br>
+        <strong style="color:#FFD700">②</strong> 국내 보안 규정 준수 (Compliance) — CSAP, 폐쇄망, 국내 저장, AI 가드레일을 동시에 충족하는가<br>
+        <strong style="color:#FFD700">③</strong> 현장 적합성 (Domain Fitness) — 한글 문서, 행정 서식, 법령·규정 데이터를 실제로 처리할 수 있는가
+      </p>
+      <p style="margin-top:10px;color:rgba(255,255,255,0.8);">
+        <strong style="color:#FFD700">핵심 메시지:</strong> Agentic AI + Sovereign LLM + AI Security — 이 세 가지가 2026~2027 공공 AI 시장의 필수 조건이자 경쟁의 핵심 변수다.
+      </p>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>본 리포트는 2026 공공AI 박람회 세션 자료(Topic 01–05) 및 참여기업 Directory Book 기반 · McKinsey 방법론 적용 · 분석 기준일: 2026.06.24</span>
+    <span class="page-num">9 / 9</span>
+  </div>
+</div>
+
+</body>
+</html>
