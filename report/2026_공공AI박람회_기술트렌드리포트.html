@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 공공 AI 박람회 기술 트렌드 리포트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0A1628;
+      --blue:   #1A3A6B;
+      --accent: #006FE6;
+      --teal:   #0E7C7B;
+      --gold:   #C9962B;
+      --red:    #C0392B;
+      --green:  #1A7A4A;
+      --bg:     #FFFFFF;
+      --bg2:    #F7F8FA;
+      --border: #DDE1E8;
+      --text:   #1A1E27;
+      --muted:  #5C6373;
+      --light:  #8A93A6;
+      --ff-kr:  'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      --ff-en:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html { font-size: 10.5pt; }
+    body {
+      font-family: var(--ff-kr);
+      background: #EAEDF2;
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      max-width: 900px;
+      margin: 32px auto;
+      background: var(--bg);
+      box-shadow: 0 4px 40px rgba(0,0,0,.14);
+    }
+
+    /* ── COVER HEADER ── */
+    .cover {
+      background: var(--navy);
+      padding: 52px 56px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 340px; height: 100%;
+      background: linear-gradient(135deg, rgba(0,111,230,.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover-badge {
+      display: inline-block;
+      font-family: var(--ff-en);
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(0,111,230,.5);
+      padding: 3px 11px;
+      border-radius: 2px;
+      margin-bottom: 22px;
+    }
+    .cover h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+    }
+    .cover h1 span { color: #5BAAFF; }
+    .cover-sub {
+      font-size: 10pt;
+      color: rgba(255,255,255,.62);
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+    .cover-meta-item { }
+    .cover-meta-label {
+      font-size: 7pt;
+      font-family: var(--ff-en);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.42);
+      margin-bottom: 3px;
+    }
+    .cover-meta-value {
+      font-size: 8.5pt;
+      color: rgba(255,255,255,.85);
+      font-weight: 500;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .body { padding: 0 56px 56px; }
+
+    /* ── EXEC SUMMARY ── */
+    .exec-summary {
+      background: var(--blue);
+      color: #fff;
+      padding: 32px 40px;
+      margin: 0 -56px 36px;
+      position: relative;
+    }
+    .exec-summary::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--accent);
+    }
+    .exec-summary h2 {
+      font-size: 8pt;
+      font-family: var(--ff-en);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #5BAAFF;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .exec-summary p {
+      font-size: 9.5pt;
+      line-height: 1.8;
+      color: rgba(255,255,255,.88);
+    }
+    .exec-summary p + p { margin-top: 10px; }
+    .exec-summary strong { color: #fff; font-weight: 600; }
+
+    /* ── SECTION HEADING ── */
+    .section { margin-bottom: 36px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .section-num {
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--ff-en);
+      font-size: 8pt;
+      font-weight: 700;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -.01em;
+    }
+    .section-label {
+      margin-left: auto;
+      font-family: var(--ff-en);
+      font-size: 7pt;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── TABLES ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5pt;
+      margin-bottom: 16px;
+    }
+    thead tr { background: var(--navy); }
+    thead th {
+      color: #fff;
+      padding: 9px 11px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 8pt;
+      letter-spacing: .02em;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:nth-child(even) { background: var(--bg2); }
+    tbody td { padding: 8px 11px; color: var(--text); vertical-align: top; }
+    tbody td:first-child { font-weight: 500; color: var(--navy); }
+    .center { text-align: center; }
+    .check { color: var(--accent); font-weight: 700; text-align: center; }
+    .dash  { color: var(--light);  text-align: center; }
+
+    /* ── TREND CARDS ── */
+    .trend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .trend-card {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 16px 18px;
+      background: var(--bg);
+    }
+    .trend-card.t1 { border-top-color: var(--navy); }
+    .trend-card.t2 { border-top-color: var(--accent); }
+    .trend-card.t3 { border-top-color: var(--teal); }
+    .trend-card.t4 { border-top-color: var(--red); }
+    .trend-card.t5 { border-top-color: var(--gold); }
+    .trend-rank {
+      font-family: var(--ff-en);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: .06em;
+      margin-bottom: 5px;
+    }
+    .trend-card.t1 .trend-rank { color: var(--navy); }
+    .trend-card.t2 .trend-rank { color: var(--accent); }
+    .trend-card.t3 .trend-rank { color: var(--teal); }
+    .trend-card.t4 .trend-rank { color: var(--red); }
+    .trend-card.t5 .trend-rank { color: var(--gold); }
+    .trend-name {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .trend-cases {
+      font-size: 7.5pt;
+      color: var(--muted);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    .trend-impact {
+      font-size: 8pt;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── MATURITY BADGES ── */
+    .badge {
+      display: inline-block;
+      font-family: var(--ff-en);
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 2px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .badge-prod   { background: #D4F0E4; color: var(--green); }
+    .badge-early  { background: #D6E8FF; color: var(--blue); }
+    .badge-grow   { background: #FFF0CC; color: #966A00; }
+    .badge-emerg  { background: #F2E8FF; color: #6A3DB8; }
+
+    /* ── IMPLICATIONS BOX ── */
+    .implication-list { list-style: none; }
+    .implication-list li {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .implication-list li:last-child { border-bottom: none; }
+    .impl-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-en);
+      font-size: 9pt;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .impl-body {}
+    .impl-title { font-size: 9pt; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .impl-desc  { font-size: 8.5pt; color: var(--text); line-height: 1.65; }
+
+    /* ── OUTLOOK TABLE ── */
+    .outlook-row td:first-child { color: var(--blue); font-weight: 600; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--bg2);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      font-size: 9pt;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .callout strong { color: var(--navy); }
+
+    /* ── TAKEAWAY BOX ── */
+    .takeaway-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .takeaway-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+    }
+    .takeaway-for {
+      font-family: var(--ff-en);
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .takeaway-text {
+      font-size: 8.5pt;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* ── CONCLUSION ── */
+    .conclusion {
+      background: var(--navy);
+      color: #fff;
+      padding: 32px 40px;
+      margin: 36px -56px 0;
+      position: relative;
+    }
+    .conclusion::before {
+      content: '';
+      position: absolute; right: 0; top: 0;
+      width: 180px; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,111,230,.15));
+    }
+    .conclusion h2 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .conclusion p {
+      font-size: 9.5pt;
+      color: rgba(255,255,255,.85);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .conclusion .highlight {
+      display: block;
+      margin-top: 20px;
+      padding: 14px 20px;
+      background: rgba(0,111,230,.25);
+      border-left: 3px solid var(--accent);
+      font-size: 9pt;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.65;
+    }
+
+    /* ── PARTNER TABLE ── */
+    .partner-tag {
+      display: inline-block;
+      font-size: 7pt;
+      font-family: var(--ff-en);
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .tag-enterprise { background: #E3EBF9; color: var(--blue); }
+    .tag-startup    { background: #E6F5EE; color: var(--green); }
+    .tag-model      { background: #FFF0E0; color: #A05000; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 14px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left { font-size: 7.5pt; color: var(--light); }
+    .footer-right { font-size: 7.5pt; color: var(--light); font-family: var(--ff-en); }
+
+    /* ── TWO-COL LAYOUT ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    /* ── SIGNAL BOX ── */
+    .signal-box {
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      background: var(--bg);
+    }
+    .signal-box h4 {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .signal-box ul {
+      padding-left: 14px;
+      font-size: 8.5pt;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: #fff; font-size: 9pt; }
+      .page { max-width: none; margin: 0; box-shadow: none; }
+      .section { page-break-inside: avoid; }
+      .trend-grid { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════════════ COVER ═══════════════ -->
+  <div class="cover">
+    <div class="cover-badge">Technology Trend Report · 2026</div>
+    <h1>2026 공공 AI 박람회<br><span>기술 트렌드 리포트</span></h1>
+    <p class="cover-sub">Agentic AI · Sovereign LLM · AI Security &amp; Governance — 공공 AX 변곡점 분석</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">발행일</div>
+        <div class="cover-meta-value">2026년 6월 24일</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">분석 범위</div>
+        <div class="cover-meta-value">Topic 01–05 전체 세션 + Directory Book (51개+ 기업)</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">주관</div>
+        <div class="cover-meta-value">행정안전부 / NIA 한국지능정보사회진흥원</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">대상 독자</div>
+        <div class="cover-meta-value">기관장 · CIO/CDO · 기술 전략팀</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ BODY ═══════════════ -->
+  <div class="body">
+
+    <!-- EXEC SUMMARY -->
+    <div class="exec-summary">
+      <h2>Executive Summary</h2>
+      <p>
+        2026 공공AI 박람회는 대한민국 공공 AI 전환(Public AX)이 <strong>실험에서 운영으로</strong> 이동하는 변곡점임을 확인한 행사다. 51개 이상의 기업이 참가한 이번 행사에서 세 가지 핵심 메시지가 도출됐다.
+      </p>
+      <p>
+        첫째, <strong>Agentic AI가 공공 AI의 새로운 기준선이 됐다.</strong> 단순 챗봇·검색 보조를 넘어 계획-실행-검증을 자율 반복하는 Agent 시스템이 5개 세션 모두에서 등장했다. 둘째, <strong>국산 LLM이 공공 신뢰의 핵심 인프라로 부상했다.</strong> Exaone 4.5, Kanana, Solar Pro 3, CLOVA Studio for GOV가 각각 공공 특화 채널을 확보하며 Sovereign AI 경쟁에 진입했다. 셋째, <strong>보안과 거버넌스가 기술과 동등한 조달 기준이 됐다.</strong> CSAP·폐쇄망·AI 가드레일을 갖추지 못한 솔루션은 공공 시장 진입 자체가 어려운 환경이다.
+      </p>
+    </div>
+
+    <!-- ── TREND TOP 5 ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title">핵심 기술 트렌드 TOP 5</div>
+        <div class="section-label">Key Technology Trends</div>
+      </div>
+
+      <div class="trend-grid">
+        <div class="trend-card t1">
+          <div class="trend-rank">TREND #1 · 출현 빈도 4/5</div>
+          <div class="trend-name">Agentic AI — 자율 루프형 에이전트</div>
+          <div class="trend-cases">이듬 AI Multi-Agent · LG CNS AgenticWorks · 와이즈넛 WISE Agent Sphere · 제네시스랩 Agentria</div>
+          <div class="trend-impact">공공 업무 프로세스 자동화의 패러다임 전환. 계획→실행→검증 루프로 민원·행정을 원스톱 처리.</div>
+        </div>
+        <div class="trend-card t2">
+          <div class="trend-rank">TREND #2 · 출현 빈도 4/5</div>
+          <div class="trend-name">Sovereign LLM — 국산 언어모델 공공 채널화</div>
+          <div class="trend-cases">Exaone 4.5 (조달청 PP존) · Kanana (AI 국민비서) · CLOVA Studio for GOV (AI법 선점)</div>
+          <div class="trend-impact">데이터 주권·보안 요건 충족과 내수 AI 생태계 구축을 동시 달성.</div>
+        </div>
+        <div class="trend-card t3">
+          <div class="trend-rank">TREND #3 · 출현 빈도 2/5</div>
+          <div class="trend-name">Document AI — 행정 문서 완전 자동화</div>
+          <div class="trend-cases">사이냅소프트 OCR IX · 한국딥러닝 DEEP Agent (96% 정확도) · Chat Exaone Canvas</div>
+          <div class="trend-impact">한글 서식·법조문·다문서 비교의 공공 특화 처리. 행정 생산성의 핵심 변수.</div>
+        </div>
+        <div class="trend-card t4">
+          <div class="trend-rank">TREND #4 · 출현 빈도 3/5</div>
+          <div class="trend-name">AI Security &amp; Governance — 생성형 AI 보안 레이어</div>
+          <div class="trend-cases">솔트웨어 Sapie-Guardian · 윈스테크넷 SNIPER AIVAX · Kanana Safeguard · 디어라운드 CronoZen</div>
+          <div class="trend-impact">데이터 유출·환각·오용 방지 + AI 결정 감사 추적. 조달 필수 요건으로 격상.</div>
+        </div>
+      </div>
+      <div class="trend-grid" style="grid-template-columns: 1fr;">
+        <div class="trend-card t5">
+          <div class="trend-rank">TREND #5 · 출현 빈도 2/5</div>
+          <div class="trend-name">Vibe Coding — 비개발자 AI 프로토타이핑 민주화</div>
+          <div class="trend-cases">Claude (재난 3D 시뮬레이션) · Replit (정책 대시보드) · Lovable (공공 채팅) — 행안부·NIA·카카오 기관장 직접 시연</div>
+          <div class="trend-impact">공공 AI 심리적 진입장벽 해소 + AI 챔피언 확산. 프로토타입→운영 전환 거버넌스 설계가 다음 과제.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FREQUENCY TABLE ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title">반복 등장 기술 분석</div>
+        <div class="section-label">Trend Frequency Analysis</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>기술 키워드</th>
+            <th class="center">T01<br>민원플랫폼</th>
+            <th class="center">T02<br>바이브코딩</th>
+            <th class="center">T03<br>Exaone</th>
+            <th class="center">T04<br>Kanana</th>
+            <th class="center">T05<br>Directory</th>
+            <th class="center">출현 수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Agentic AI / Multi-Agent</td>
+            <td class="check">✓</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td>
+            <td class="center" style="font-weight:700;color:#0A1628;">4</td>
+          </tr>
+          <tr>
+            <td>공공 서비스 플랫폼 연동</td>
+            <td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td>
+            <td class="center" style="font-weight:700;color:#0A1628;">5</td>
+          </tr>
+          <tr>
+            <td>국산 LLM (Sovereign AI)</td>
+            <td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td>
+            <td class="center" style="font-weight:700;color:#0A1628;">4</td>
+          </tr>
+          <tr>
+            <td>RAG / Knowledge Retrieval</td>
+            <td class="check">✓</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="check">✓</td>
+            <td class="center">3</td>
+          </tr>
+          <tr>
+            <td>AI Security / Guardrail</td>
+            <td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td>
+            <td class="center">3</td>
+          </tr>
+          <tr>
+            <td>Document AI (OCR/VLM)</td>
+            <td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="check">✓</td>
+            <td class="center">2</td>
+          </tr>
+          <tr>
+            <td>Vibe Coding / No-Code</td>
+            <td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td>
+            <td class="center">2</td>
+          </tr>
+          <tr>
+            <td>Synthetic Data / Fine-tuning</td>
+            <td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td><td class="dash">—</td>
+            <td class="center" style="color:var(--muted);">1</td>
+          </tr>
+          <tr>
+            <td>Digital Inclusion / 접근성</td>
+            <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td>
+            <td class="center" style="color:var(--muted);">1</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- MATURITY TABLE -->
+      <p style="font-size:9pt;font-weight:700;color:var(--navy);margin:20px 0 10px;">Technology Maturity Assessment</p>
+      <table>
+        <thead>
+          <tr>
+            <th>기술</th>
+            <th>성숙도 단계</th>
+            <th>공공 적용 준비 수준</th>
+            <th>근거</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RAG</td>
+            <td><span class="badge badge-prod">Production</span></td>
+            <td>즉시 조달 가능</td>
+            <td>다수 운영 레퍼런스 확보</td>
+          </tr>
+          <tr>
+            <td>국산 LLM (Exaone·Kanana·Solar)</td>
+            <td><span class="badge badge-prod">Production</span></td>
+            <td>조달청 등록·CSAP 진행 중</td>
+            <td>Exaone 8만명 95%, Kanana 4,500만 MAU</td>
+          </tr>
+          <tr>
+            <td>Multi-Agent Orchestration</td>
+            <td><span class="badge badge-early">Early Production</span></td>
+            <td>파일럿·POC 단계</td>
+            <td>이듬 AI·LG CNS AgenticWorks PoC 상태</td>
+          </tr>
+          <tr>
+            <td>Document AI (VLM)</td>
+            <td><span class="badge badge-early">Early Production</span></td>
+            <td>특정 도메인 적용 가능</td>
+            <td>DEEP Agent 96% 정확도, 독립 검증 필요</td>
+          </tr>
+          <tr>
+            <td>AI Security / Guardrail</td>
+            <td><span class="badge badge-grow">Growing</span></td>
+            <td>동반 구매 필수</td>
+            <td>솔루션 급증, 표준화는 미성숙</td>
+          </tr>
+          <tr>
+            <td>Vibe Coding</td>
+            <td><span class="badge badge-emerg">Emerging</span></td>
+            <td>프로토타이핑 전용</td>
+            <td>운영 전환 거버넌스 미비</td>
+          </tr>
+          <tr>
+            <td>Synthetic Data Generation</td>
+            <td><span class="badge badge-early">Early Production</span></td>
+            <td>도메인 특화 효과 검증</td>
+            <td>국민연금 POC 20% 성능 개선</td>
+          </tr>
+          <tr>
+            <td>Physical AI (로봇)</td>
+            <td><span class="badge badge-emerg">Emerging</span></td>
+            <td>재난·현장 한정</td>
+            <td>마음AI 진도봇, 전환 시기 불확실</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── CORPORATE TRENDS ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title">기업 및 기관 동향</div>
+        <div class="section-label">Market Participants</div>
+      </div>
+
+      <div class="two-col" style="margin-bottom:16px;">
+        <div class="signal-box">
+          <h4>대기업 — AI 풀스택 플랫폼 전략 <span class="partner-tag tag-enterprise">Enterprise</span></h4>
+          <ul>
+            <li><strong>삼성SDS</strong>: 브리티웍스(협업) + 패브릭스(Agent) + PPP 클라우드 → 공공 전용 번들</li>
+            <li><strong>LG CNS</strong>: EXAONE + AgenticWorks + Data Foundry → 모델·인프라·데이터 수직 통합</li>
+            <li><strong>카카오</strong>: Kanana + AI 국민비서 + Safeguard → 4,500만 MAU 플랫폼 활용</li>
+            <li><strong>네이버클라우드</strong>: CLOVA Studio for GOV → AI법(2026.8) 선점 포지셔닝</li>
+          </ul>
+        </div>
+        <div class="signal-box">
+          <h4>스타트업 — 공공 버티컬 특화 <span class="partner-tag tag-startup">Startup</span></h4>
+          <ul>
+            <li><strong>민원·행정 Agent</strong>: 이듬 AI, 법틀(민트), 메타빌드 LLaMON AX</li>
+            <li><strong>규제·법령 모니터링</strong>: 코딧(CODIT), 디어라운드(CronoZen)</li>
+            <li><strong>디지털 포용·접근성</strong>: 투아트, 닷, 망고슬래브, 이큐포올</li>
+            <li><strong>문서·지식 AI</strong>: 포티투마루(RAG42), 업스테이지(Solar Pro 3), 사이냅소프트</li>
+          </ul>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>파트너십</th><th>내용</th><th>전략적 의미</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>LG CNS × 한컴</td><td>Chat Exaone ↔ 공공 문서 에이전트 연동 (연내)</td><td>행정 문서 생태계 표준 선점</td></tr>
+          <tr><td>카카오 × 행정안전부</td><td>AI 국민비서 (정부24·공유누리 통합)</td><td>민간 플랫폼-정부 공식 협력 모델</td></tr>
+          <tr><td>네이버클라우드 × AI법</td><td>CLOVA Studio for GOV — 제27조 시행 대응</td><td>규제 친화 조달 선점</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:12px;text-align:center;">
+          <div style="font-size:18pt;font-weight:900;color:var(--navy);font-family:var(--ff-en);">51+</div>
+          <div style="font-size:7.5pt;color:var(--muted);">참가 기업 수</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:12px;text-align:center;">
+          <div style="font-size:18pt;font-weight:900;color:var(--accent);font-family:var(--ff-en);">18</div>
+          <div style="font-size:7.5pt;color:var(--muted);">스타트업 혁신기술 참가</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:12px;text-align:center;">
+          <div style="font-size:18pt;font-weight:900;color:var(--teal);font-family:var(--ff-en);">5</div>
+          <div style="font-size:7.5pt;color:var(--muted);">전체 세션 분석 완료</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:12px;text-align:center;">
+          <div style="font-size:18pt;font-weight:900;color:var(--gold);font-family:var(--ff-en);">4</div>
+          <div style="font-size:7.5pt;color:var(--muted);">국산 LLM 공공 진입</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MARKET DIRECTION ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title">Public AI 시장 방향성</div>
+        <div class="section-label">Market Direction</div>
+      </div>
+
+      <div class="two-col">
+        <div class="signal-box">
+          <h4>3대 수요 신호</h4>
+          <ul>
+            <li><strong>보안 우선 구매</strong>: CSAP·폐쇄망·국내 데이터 저장이 조달 필수 기준으로 굳어짐. 미충족 시 RFP 단계 탈락.</li>
+            <li><strong>에이전트 기반 업무 자동화</strong>: 질의응답 AI를 넘어 Agent 도입으로 공공 업무 프로세스가 재설계되는 단계 진입.</li>
+            <li><strong>AI 리터러시 제도화</strong>: 바이브 코딩 시연에서 확인된 AI 챔피언 네트워크가 조직 변화관리 채널로 기능 시작. 교육·제도화 수요 증가.</li>
+          </ul>
+        </div>
+        <div class="signal-box">
+          <h4>2026 공공 AI 예산 집행 우선 영역</h4>
+          <ul>
+            <li>Agentic 민원·행정 자동화 (원스톱 처리 플랫폼)</li>
+            <li>국산 LLM 기반 SaaS 협업 플랫폼 전환</li>
+            <li>AI 보안 솔루션 동반 구매 (Guardrail + 데이터 유출 방지)</li>
+            <li>디지털 포용 (접근성 AI) — 고령화·장애인 행정 서비스</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STRATEGIC IMPLICATIONS ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title">Strategic Implications</div>
+        <div class="section-label">공공기관 CIO/CDO를 위한 4가지 시사점</div>
+      </div>
+
+      <ul class="implication-list">
+        <li>
+          <div class="impl-num">1</div>
+          <div class="impl-body">
+            <div class="impl-title">Agentic AI POC를 2026년 내 착수하라</div>
+            <div class="impl-desc">단순 챗봇 도입은 이미 레거시 경로다. 멀티 에이전트 오케스트레이션 기반의 업무 자동화 PoC를 지금 시작하지 않으면 2027년 구현 경쟁에서 뒤처진다.</div>
+          </div>
+        </li>
+        <li>
+          <div class="impl-num">2</div>
+          <div class="impl-body">
+            <div class="impl-title">국산 LLM + 보안 솔루션을 패키지로 조달하라</div>
+            <div class="impl-desc">국산 모델(Exaone·Kanana·Solar)과 AI 보안(Sapie-Guardian·SNIPER AIVAX)을 별도 사업이 아닌 패키지로 설계해야 국정원 지침 준수와 도입 효율을 동시에 달성할 수 있다.</div>
+          </div>
+        </li>
+        <li>
+          <div class="impl-num">3</div>
+          <div class="impl-body">
+            <div class="impl-title">바이브 코딩을 PoC 도구로 제도화하라</div>
+            <div class="impl-desc">기관장 시연이 증명한 것은 "5분 프로토타입 가능성"이다. 이를 공식 실험 문화로 연결하지 않으면 일회성 이벤트로 끝난다. <strong>바이브 코딩 결과물 → 보안 검증 → 공식 PoC 전환 프로세스</strong>를 수립하라.</div>
+          </div>
+        </li>
+        <li>
+          <div class="impl-num">4</div>
+          <div class="impl-body">
+            <div class="impl-title">AI 거버넌스를 기술 도입과 동시에 설계하라</div>
+            <div class="impl-desc">CronoZen의 DPU 증명, Safeguard의 가드레일처럼 AI 결정의 감사 추적 체계를 도입 초기에 내재화해야 한다. 사후 보완은 비용이 기하급수적으로 증가한다.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── 2027 OUTLOOK ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div class="section-title">2027 Outlook</div>
+        <div class="section-label">Forward-Looking Assessment</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>전망 영역</th><th>2027 예측</th><th>근거</th></tr>
+        </thead>
+        <tbody class="outlook-row">
+          <tr>
+            <td>에이전트 표준화</td>
+            <td>공공 멀티에이전트 프로토콜(MCP류) 표준 논의 가시화</td>
+            <td>이듬 AI MCP vs LG CNS AgenticWorks 경쟁</td>
+          </tr>
+          <tr>
+            <td>국산 LLM 조달 의무화</td>
+            <td>AI법 제27조 시행 후 국산 우선 조달 가이드라인 등장</td>
+            <td>CLOVA Studio for GOV 선점 움직임</td>
+          </tr>
+          <tr>
+            <td>Vibe Coding 제도화</td>
+            <td>AI 챔피언 제도 법제화, 비개발자 AI 도구 공식 업무 허가</td>
+            <td>행안부·NIA 기관장 직접 시연의 정치적 효과</td>
+          </tr>
+          <tr>
+            <td>AI 보안 통합 플랫폼</td>
+            <td>AI 보안·접근제어·감사 추적 단일 패키지화</td>
+            <td>현재 분산된 보안 솔루션의 통합 압력</td>
+          </tr>
+          <tr>
+            <td>디지털 포용 의무화</td>
+            <td>공공 서비스 접근성 AI 법제화 (배리어프리 키오스크, 수어 AI 등)</td>
+            <td>E 카테고리 접근성 솔루션 18개사 집중</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── KEY TAKEAWAYS ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <div class="section-title">Key Takeaways</div>
+        <div class="section-label">독자별 핵심 메시지</div>
+      </div>
+
+      <div class="takeaway-grid">
+        <div class="takeaway-card">
+          <div class="takeaway-for">For 기관장</div>
+          <div class="takeaway-text">바이브 코딩으로 직접 시작하라. 기술 장벽은 이미 낮아졌다. 이제 장벽은 제도와 거버넌스다.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-for">For CIO / CDO</div>
+          <div class="takeaway-text">에이전트 PoC 착수, 국산 LLM + 보안 패키지 조달, AI 거버넌스 내재화를 2026년 내 실행하라.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-for">For 솔루션 벤더</div>
+          <div class="takeaway-text">공공 시장은 기술 성능보다 보안·인증·현장 적합성이 선결 조건이다. CSAP·폐쇄망·한국어 특화 없이는 RFP에서 탈락한다.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-for">For 정책 입안자</div>
+          <div class="takeaway-text">AI법 시행(2026.8)과 동시에 MCP 표준·에이전트 거버넌스·바이브 코딩 제도화 가이드라인을 준비해야 한다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- ═══════════════ CONCLUSION ═══════════════ -->
+  <div class="conclusion">
+    <h2>Final Conclusion</h2>
+    <p>
+      2026 공공AI 박람회가 보여준 것은 공공 AI가 "도입할 것인가"를 논의하는 단계를 지나 <strong>"어떻게 제대로 운영할 것인가"</strong>로 진입했다는 사실이다.
+    </p>
+    <p>
+      승자를 가르는 기준은 세 가지다: <strong>에이전트 자율성(Agentic Capability)</strong>, <strong>국내 보안 규정 준수(Compliance)</strong>, <strong>현장 적합성(Domain Fitness)</strong>. 이 세 조건을 동시에 충족하는 솔루션만이 공공 조달의 문을 통과할 것이다.
+    </p>
+    <p>
+      2026년은 공공 AI 인프라의 표준이 결정되는 해다. 지금 적극적으로 PoC를 실행하고 레퍼런스를 만드는 기관과 기업이 2027년 이후 생태계의 중심에 서게 된다.
+    </p>
+    <span class="highlight">핵심 3대 키워드: <strong>Agentic AI</strong> + <strong>Sovereign LLM</strong> + <strong>AI Security</strong> — 이 세 가지가 2026~2027 공공 AI 시장의 필수 조건이자 경쟁의 핵심 변수다.</span>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">본 리포트는 2026 공공AI 박람회 세션 자료(Topic 01–05) 및 참여기업 Directory Book을 기반으로 분석됐습니다. / 주관: 행정안전부 · NIA</div>
+    <div class="footer-right">2026 Public AI Expo · Technology Trend Report</div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
